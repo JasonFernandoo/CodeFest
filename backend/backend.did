@@ -1,1 +1,9 @@
-service : { greet : (text) -> (text) query; set_greeting : (text) -> () }
+type Result = variant { Ok : text; Err : text };
+service : () -> {
+  greet : (text) -> (text) query;
+  metadata : (nat64) -> (opt vec record { text; text }) query;
+  mint : (vec record { text; text }, text) -> (nat64);
+  owner_of : (nat64) -> (opt text) query;
+  set_greeting : (text) -> ();
+  transfer : (nat64, text) -> (Result);
+}
