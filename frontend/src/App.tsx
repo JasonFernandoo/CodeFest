@@ -2,6 +2,8 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Description from "./pages/Description";
+import Service from "./pages/Service";
+import Product from "./pages/Product";
 
 function App() {
 
@@ -10,6 +12,8 @@ function App() {
 			<Navbar />
 			<Home />
 			<Description />
+			<Service />
+			<Product />
 		</>
 	);
 }
