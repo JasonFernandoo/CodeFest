@@ -1,1 +1,6 @@
-service : { greet : (text) -> (text) query; set_greeting : (text) -> () }
+service : {
+  get_count : () -> (nat32) query;
+  greet : (text) -> (text) query;
+  inc : (nat32) -> ();
+  set_greeting : (text) -> ();
+}
