@@ -1,19 +1,21 @@
 import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Description from "./pages/Description";
-import Service from "./pages/Service";
-import Product from "./pages/Product";
+import LandingPage from "./pages/LandingPage";
+import Overview from "./pages/Overview";
 
 function App() {
 
 	return (
 		<>
+		<Router>
 			<Navbar />
-			<Home />
-			<Description />
-			<Service />
-			<Product />
+			<Routes>
+				<Route path="/" element={<LandingPage />} />
+				<Route path="/overview" element={<Overview />} />
+			</Routes>
+		</Router>
 		</>
 	);
 }
