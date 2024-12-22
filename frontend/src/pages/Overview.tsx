@@ -1,11 +1,15 @@
 import React from 'react'
-import { useDarkMode } from '../DarkModeContext'
+import OverviewHome from '../components/OverviewHome'
+import OverviewContainer from '../components/OverviewContainer'
+import Footer from '../components/Footer'
 
 const Overview = () => {
-    const { darkMode } = useDarkMode()
-    
   return (
-    <div>Overview</div>
+    <>
+      <OverviewHome />
+      <OverviewContainer />
+      <Footer />
+    </>
   )
 }
 

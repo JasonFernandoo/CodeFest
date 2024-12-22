@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import Home from "../components/Home";
 import Description from "../components/Description";
 import Service from "../components/Service";
@@ -9,7 +8,6 @@ function LandingPage() {
 
 	return (
 		<>
-			<Navbar />
 			<Home />
 			<Description />
 			<Service />
