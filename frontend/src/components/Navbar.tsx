@@ -22,13 +22,13 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={`h-[70px] w-[100vw] fixed transition duration-500 ease ${scrolled ? (darkMode ? 'bg-gray-800 text-white border-b-[1px]' : 'bg-white text-black border-white border-b-[1px]') : (darkMode ? 'bg-transparent text-white' : 'bg-transparent text-black')}`}>
+    <div className={`h-[70px] w-[100vw] fixed transition z-50 duration-500 ease ${scrolled ? (darkMode ? 'bg-black text-white border-b-[1px]' : 'bg-white text-black border-white border-b-[1px]') : (darkMode ? 'bg-transparent text-white' : 'bg-transparent text-black')}`}>
       <div className="h-[70px] w-full flex justify-between">
         <div className="h-full w-[30%] flex items-center">
-          <img className="h-[50px] w-[50px] ml-[50px] hover:cursor-pointer" alt="logo" />
-          <p className="text-[24px] font-bold ml-[20px]">
+          <img src="/logo.png" className="h-[50px] w-[50px] ml-[50px] hover:cursor-pointer" alt="logo" />
+          {/* <p className="text-[24px] font-bold ml-[20px]">
             <Link to="/" className="no-underline text-inherit hover:text-[#898989]">Aman</Link>
-          </p>
+          </p> */}
           <div className="h-[40px] w-[2px] bg-gray-200 ml-[20px]"></div>
           <ul className="flex items-center gap-[20px] ml-[20px] font-bold hover:cursor-pointer">
             <li className="text-[16px]">
