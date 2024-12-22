@@ -44,20 +44,25 @@ const Service = () => {
 
             {/* Service 1 */}
             <div className="w-full flex justify-start ">
-              <motion.div
-                initial={{ opacity: 0, y: 50, scale: 0.8 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-                className={`relative z-10 backdrop-blur-md w-96 h-40 md:h-60 shadow-lg rounded-lg flex flex-col justify-center items-center border transition-all duration-300 mb-8 self-start ${darkMode ? "bg-black text-white border-white" : "bg-white text-black border-black"}`}>
-                <div className="text-purple-400 text-7xl mb-2">
-                  <i className="far fa-id-card"></i>
-                </div>
-                <h2 className="text-lg font-semibold text-center">ID Card</h2>
-                <p className="text-sm text-center mt-1 text-gray-400">
-                  Lorem Ipsum Dolor Sit Amet
-                </p>
-              </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className={`relative z-10 backdrop-blur-md w-96 h-40 md:h-60 shadow-lg rounded-lg flex flex-col justify-center items-center transition-all duration-300 mb-8 self-start ${
+                darkMode
+                  ? "bg-gradient-to-br from-gray-800 via-green-900 to-black text-white"
+                  : "bg-gradient-to-br from-gray-100 via-green-100 to-white text-black"
+              }`}
+            >
+              <div className="text-purple-400 text-7xl mb-2">
+                <i className="far fa-id-card"></i>
+              </div>
+              <h2 className="text-lg font-semibold text-center">ID Card</h2>
+              <p className="text-sm text-center mt-1 text-gray-400">
+                Lorem Ipsum Dolor Sit Amet
+              </p>
+            </motion.div>
             </div>
             {/* Service 2 */}
             <div className="w-full flex justify-end" >
@@ -66,7 +71,11 @@ const Service = () => {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                className={`relative z-10 backdrop-blur-md w-96 h-40 md:h-60 shadow-lg rounded-lg flex flex-col justify-center items-center border transition-all duration-300 mb-8 ${darkMode ? "bg-black text-white border-white" : "bg-white text-black border-black"}`}
+                className={`relative z-10 backdrop-blur-md opacity-50 w-96 h-40 md:h-60 shadow-lg rounded-lg flex flex-col justify-center items-center transition-all duration-300 mb-8 self-start ${
+                  darkMode
+                    ? "bg-gradient-to-br from-gray-800 via-red-900 to-black text-white"
+                    : "bg-gradient-to-br from-gray-100 via-red-100 to-white text-black"
+                }`}
               >
                 <div className="text-blue-400 text-7xl mb-2">
                   <i className="fas fa-certificate"></i>
@@ -83,7 +92,11 @@ const Service = () => {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-            className={`relative z-10 backdrop-blur-md w-96 h-40 md:h-60 shadow-lg rounded-lg flex flex-col justify-center items-center border transition-all duration-300 mb-8 self-start ${darkMode ? "bg-black text-white border-white" : "bg-white text-black border-black"}`}
+            className={`relative z-10 backdrop-blur-md opacity-50 w-96 h-40 md:h-60 shadow-lg rounded-lg flex flex-col justify-center items-center transition-all duration-300 mb-8 self-start ${
+              darkMode
+                ? "bg-gradient-to-br from-gray-800 via-blue-900 to-black text-white"
+                : "bg-gradient-to-br from-gray-100 via-blue-100 to-white text-black"
+            }`}
           >
             <div className="text-pink-400 text-7xl mb-2">
               <i className="fas fa-layer-group"></i>
