@@ -22,10 +22,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={`h-[70px] w-[100vw] fixed transition z-50 duration-500 ease ${scrolled ? (darkMode ? 'bg-black text-white border-b-[1px]' : 'bg-white text-black border-white border-b-[1px]') : (darkMode ? 'bg-transparent text-white' : 'bg-transparent text-black')}`}>
+    <div className={`h-[70px] w-[100vw] fixed transition z-50 duration-500 ease ${scrolled ? (darkMode ? 'bg-black text-white border-b-[1px]' : 'bg-white text-black border-b-[1px]') : (darkMode ? 'bg-transparent text-white' : 'bg-transparent text-black')}`}>
       <div className="h-[70px] w-full flex justify-between">
         <div className="h-full w-[30%] flex items-center">
-          <img src="/logo.png" className="h-[50px] w-[50px] ml-[50px] hover:cursor-pointer" alt="logo" />
+          <Link to="/"><img src="/logo.png" className="h-[50px] w-[50px] ml-[50px] hover:cursor-pointer" alt="logo" /></Link>
           {/* <p className="text-[24px] font-bold ml-[20px]">
             <Link to="/" className="no-underline text-inherit hover:text-[#898989]">Aman</Link>
           </p> */}
