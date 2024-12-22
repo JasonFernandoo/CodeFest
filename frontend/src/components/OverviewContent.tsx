@@ -5,7 +5,7 @@ const OverviewContent = () => {
   const {darkMode} = useDarkMode();
   return (
     <div className='w-[95%]'>
-        <div className='w-[100%] h-[30vh] flex flex-col justify-center text-start'>
+        <div className='w-[100%] h-[30vh] flex flex-col justify-center text-start' id="what-is-aman">
             <h1 className='text-[30px] font-bold'>What is Aman?</h1>
             <p className='text-[18px] mt-[3%]'>Lorem ipsum odor amet, consectetuer adipiscing elit. Orci tempus vehicula senectus risus tincidunt taciti molestie sollicitudin. At quis cubilia elementum magna luctus himenaeos sollicitudin viverra. Curabitur diam conubia condimentum aliquet quis ac litora ut magnis. Augue netus tortor blandit aenean parturient. Libero suscipit sapien malesuada arcu ligula iaculis.</p>
         </div>
@@ -47,7 +47,7 @@ const OverviewContent = () => {
                 </div>
             </div>
         </div>
-        <div className='w-[100%] h-[30vh] flex flex-col justify-center text-start'>
+        <div className='w-[100%] h-[30vh] flex flex-col justify-center text-start' id="how-to-use-aman">
             <h1 className='text-[30px] font-bold'>How do I use Aman?</h1>
             <p className='text-[18px] mt-[3%]'>Lorem ipsum odor amet, consectetuer adipiscing elit. Orci tempus vehicula senectus risus tincidunt taciti molestie sollicitudin. At quis cubilia elementum magna luctus himenaeos sollicitudin viverra. Curabitur diam conubia condimentum aliquet quis ac litora ut magnis. Augue netus tortor blandit aenean parturient. Libero suscipit sapien malesuada arcu ligula iaculis.</p>
         </div>
@@ -89,7 +89,7 @@ const OverviewContent = () => {
                 </div>
             </div>
         </div>
-        <div className='w-[100%] h-[30vh] flex flex-col justify-center text-start'>
+        <div className='w-[100%] h-[30vh] flex flex-col justify-center text-start' id="what-is-aman-used-for">
             <h1 className='text-[30px] font-bold'>What is Aman use for?</h1>
             <p className='text-[18px] mt-[3%]'>Lorem ipsum odor amet, consectetuer adipiscing elit. Orci tempus vehicula senectus risus tincidunt taciti molestie sollicitudin. At quis cubilia elementum magna luctus himenaeos sollicitudin viverra. Curabitur diam conubia condimentum aliquet quis ac litora ut magnis. Augue netus tortor blandit aenean parturient. Libero suscipit sapien malesuada arcu ligula iaculis.</p>
         </div>
