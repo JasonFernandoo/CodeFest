@@ -25,7 +25,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/find" element={<NFTPage />} />
           <Route path="/collections" element={<CollectionsPage />} />
-          <Route path="/show/:id" element={<Show />} />
+          <Route path="/shows/:id" element={<Show />} />
         </Routes>
         <Footer ref={footerRef} />
       </Router>

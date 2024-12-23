@@ -10,7 +10,6 @@ process.env.II_URL =
     : `https://identity.ic0.app`;
 
 export default defineConfig({
-  base: "./",
   plugins: [
     react(),
     environment("all", { prefix: "CANISTER_" }),
