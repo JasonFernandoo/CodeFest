@@ -45,7 +45,7 @@ export default function Input() {
 
   return (
     <div
-      className={`h-[100vh] w-[100vw] flex justify-center bg-[url('/background2.png')] bg-cover bg-center items-center py-10 px-4 ${
+      className={`h-[100vh] w-[100vw] flex justify-center bg-[url('/background2-rev.png')] bg-cover bg-center items-center py-10 px-4 ${
         darkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
