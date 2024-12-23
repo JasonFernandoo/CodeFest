@@ -37,7 +37,7 @@ export default function Input() {
 
   return (
     <div
-      className={`h-[100vh] w-[100vw] flex justify-center items-center py-10 px-4 ${
+      className={`h-[100vh] w-[100vw] flex justify-center bg-[url('/background2.png')] bg-cover bg-center items-center py-10 px-4 ${
         darkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
@@ -55,10 +55,12 @@ export default function Input() {
                 <FormItem>
                   <FormLabel>Upload Image</FormLabel>
                   <FormControl>
-                    <div>
-                      <ShadInput
+                    <div className="relative">
+                      <input
                         type="file"
                         accept="image/*"
+                        className="hidden"
+                        id="image-upload"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
                           if (file) {
@@ -71,15 +73,41 @@ export default function Input() {
                           }
                         }}
                       />
-                      {previewUrl && (
-                        <div className="mt-2 w-60 h-60 border flex items-center justify-center">
+                      <label
+                        htmlFor="image-upload"
+                        className={`w-full h-64 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 ${
+                          darkMode 
+                            ? 'border-gray-600 hover:border-gray-500' 
+                            : 'border-gray-300 hover:border-gray-400'
+                        }`}
+                      >
+                        {previewUrl ? (
                           <img
                             src={previewUrl}
                             alt="Preview"
                             className="max-w-full max-h-full object-contain"
                           />
-                        </div>
-                      )}
+                        ) : (
+                          <>
+                            <svg 
+                              className="w-12 h-12 mb-3 text-gray-400" 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path 
+                                strokeLinecap="round" 
+                                strokeLinejoin="round" 
+                                strokeWidth="2" 
+                                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                              />
+                            </svg>
+                            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                              Click to upload an image
+                            </p>
+                          </>
+                        )}
+                      </label>
                     </div>
                   </FormControl>
                   <FormMessage />
@@ -103,7 +131,22 @@ export default function Input() {
             />
 
             {/* Submit */}
-            <Button type="submit" variant="default">
+            <Button 
+              className="w-full h-full transition-all duration-300 ease-in-out text-white font-semibold transform hover:scale-[0.98]" 
+              style={{
+                background: "linear-gradient(to right, #FF00FF, #086478)",
+                backgroundSize: "200% auto",
+                transition: "background-position 0.5s ease-in-out",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundPosition = "right center";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundPosition = "left center";
+              }}
+              type="submit" 
+              variant="default"
+            >
               Submit
             </Button>
           </form>
