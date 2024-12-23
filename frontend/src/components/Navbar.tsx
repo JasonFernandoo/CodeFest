@@ -81,10 +81,18 @@ const Navbar = ({ footerRef }: NavbarProps) => {
               </li>
               <li className="text-[16px] hover:text-[#898989]">
                 <Link
-                  to="/nft"
+                  to="/storage"
                   className="no-underline text-inherit hover:text-[#898989]"
                 >
                   Storage
+                </Link>
+              </li>
+              <li className="text-[16px] hover:text-[#898989]">
+                <Link
+                  to="/collections"
+                  className="no-underline text-inherit hover:text-[#898989]"
+                >
+                  Collections
                 </Link>
               </li>
               <li
