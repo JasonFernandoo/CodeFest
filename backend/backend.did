@@ -8,4 +8,5 @@ service : () -> {
   icrc7_total_supply : () -> (nat64) query;
   icrc7_transfer : (nat64, text) -> (Result);
   list_all_nfts : () -> (vec record { nat64; vec record { text; text } }) query;
+  whoami : () -> (text) query;
 }
