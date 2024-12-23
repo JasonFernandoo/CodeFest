@@ -8,12 +8,18 @@ module.exports = {
 		animation: {
 			'bounce-slow': 'bounce 3s infinite',
 			'rotate-right-left': 'rotateRightLeft 3s infinite linear',
+			scaleUp: 'scaleUp 3s infinite',
+			scaleUp2: 'scaleUp 3.5s infinite'
 		},
 		keyframes: {
 			rotateRightLeft: {
 			  '0%, 100%': { transform: 'rotate(0deg)' },
 			  '50%': { transform: 'rotate(10deg)' },
 			},
+			scaleUp: {
+				'0%, 100%': { transform: 'scale(1)' },
+				'50%': { transform: 'scale(1.05)' },
+			  },
 		},
   		borderRadius: {
   			lg: 'var(--radius)',
