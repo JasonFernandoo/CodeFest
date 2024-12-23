@@ -9,11 +9,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"; // Adjust import path as needed
-import { Input as ShadInput } from "@/components/ui/input"; // Adjust import path
-import { Button } from "@/components/ui/button"; // Adjust import path
+} from "@/components/ui/form";
+import { Input as ShadInput } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useDarkMode } from "../DarkModeContext";
-import { backend } from "declarations/backend";
+import { useActor } from "@/ic/Actors";
 
 const formSchema = z.object({
   image: z
@@ -26,21 +26,43 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function Input() {
   const { darkMode } = useDarkMode();
+  const { actor: backend } = useActor();
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [tokenId, setTokenId] = useState<bigint | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false); // Added loading state
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   });
 
   async function onSubmit(values: FormValues) {
-    console.log(values);
-    const arrayBuffer = await values.image.arrayBuffer();
-    backend.icrc7_mint(
-      "principal",
-      "description",
-      values.name,
-      new Uint8Array(arrayBuffer)
-    );
+    setIsLoading(true); // Start loading
+    try {
+      const arrayBuffer = await values.image.arrayBuffer();
+      if (!backend) {
+        throw new Error("Backend is not defined");
+      }
+      const response = await backend.icrc7_mint(
+        "principal",
+        "description",
+        values.name,
+        new Uint8Array(arrayBuffer)
+      );
+
+      if ("Ok" in response) {
+        setTokenId(response.Ok);
+        setError(null);
+      } else {
+        setError(response.Err);
+        setTokenId(null);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unknown error occurred");
+      setTokenId(null);
+    } finally {
+      setIsLoading(false); // End loading
+    }
   }
 
   return (
@@ -61,7 +83,7 @@ export default function Input() {
               name="image"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Upload Image</FormLabel>
+                  <FormLabel>Upload Image (Max 2 MB)</FormLabel>
                   <FormControl>
                     <div className="relative">
                       <input
@@ -144,7 +166,7 @@ export default function Input() {
 
             {/* Submit */}
             <Button
-              className="w-full h-full transition-all duration-300 ease-in-out text-white font-semibold transform hover:scale-[0.98]"
+              className="w-full h-full transition-all duration-300 ease-in-out text-white font-semibold transform hover:scale-[0.98] disabled:opacity-50"
               style={{
                 background: "linear-gradient(to right, #FF00FF, #086478)",
                 backgroundSize: "200% auto",
@@ -158,11 +180,21 @@ export default function Input() {
               }}
               type="submit"
               variant="default"
+              disabled={isLoading} // Disable button when loading
             >
-              Submit
+              {isLoading ? (
+                <svg
+                  className="animate-spin h-5 w-5 mr-3 border-t-2 border-b-2 border-white rounded-full"
+                  viewBox="0 0 24 24"
+                ></svg>
+              ) : (
+                "Submit"
+              )}
             </Button>
           </form>
         </Form>
+        {error && <p className="text-red-500">Error: {error}</p>}
+        {tokenId !== null && <p>Token ID: {tokenId.toString()}</p>}
       </div>
     </div>
   );
