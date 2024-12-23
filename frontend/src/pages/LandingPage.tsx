@@ -2,7 +2,6 @@ import Home from "../components/Home";
 import Description from "../components/Description";
 import Service from "../components/Service";
 import Product from "../components/Product";
-import Footer from "../components/Footer";
 
 function LandingPage() {
 
@@ -12,7 +11,6 @@ function LandingPage() {
 			<Description />
 			<Service />
 			<Product />
-			<Footer />
 		</>
 	);
 }
