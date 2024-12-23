@@ -335,6 +335,7 @@ const OverviewContent = () => {
               improved with ICP:
             </p>
           </div>
+          
           <div className="w-[85%] h-[80%] flex justify-center text-start">
             <ul className="list-disc pl-5">
               <li>Decentralized Identity Verification</li>
