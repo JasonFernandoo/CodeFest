@@ -42,7 +42,7 @@ const Profile = () => {
         <div className="flex flex-col gap-5">
           <p className="flex justify-center items-center">
             :{" "}
-            <span className="h-[40px] w-[200px] bg-[#e8e8e860] rounded-[5px] ml-[20px] flex items-center pl-[15px]">
+            <span className="h-[40px] bg-[#e8e8e860] rounded-[5px] ml-[20px] flex items-center pl-[15px] pr-4">
               {principal}
             </span>
           </p>
