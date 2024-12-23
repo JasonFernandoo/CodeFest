@@ -1,11 +1,11 @@
+use base64::encode;
 use ic_cdk_macros::{init, query, update};
 use ic_stable_structures::{
     memory_manager::{MemoryId, MemoryManager, VirtualMemory},
     DefaultMemoryImpl,
 };
 use std::cell::RefCell;
-use std::collections::HashMap;
-use base64::{encode}; // For Base64 encoding
+use std::collections::HashMap; // For Base64 encoding
 
 // Type definitions
 type TokenId = u64;
@@ -62,13 +62,7 @@ fn mint(owner: PrincipalId, description: String, name: String, image: Vec<u8>) -
         let token_id = state.next_token_id;
 
         // Store the NFT
-        state.nfts.insert(
-            token_id,
-            NFT {
-                owner,
-                metadata,
-            },
-        );
+        state.nfts.insert(token_id, NFT { owner, metadata });
 
         // Increment the token ID counter
         state.next_token_id += 1;

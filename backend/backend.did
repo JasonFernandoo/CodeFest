@@ -3,6 +3,6 @@ service : () -> {
   delete_nft : (nat64) -> (Result);
   list_all_nfts : () -> (vec record { nat64; vec record { text; text } }) query;
   metadata : (nat64) -> (opt vec record { text; text }) query;
-  mint_with_image : (text, text, text, blob) -> (nat64);
+  mint : (text, text, text, blob) -> (nat64);
   owner_of : (nat64) -> (opt text) query;
 }

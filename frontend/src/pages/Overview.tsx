@@ -1,7 +1,6 @@
-import React from 'react'
-import OverviewHome from '../components/OverviewHome'
-import OverviewContainer from '../components/OverviewContainer'
-import Footer from '../components/Footer'
+import OverviewHome from "../components/OverviewHome";
+import OverviewContainer from "../components/OverviewContainer";
+import Footer from "../components/Footer";
 
 const Overview = () => {
   return (
@@ -10,7 +9,7 @@ const Overview = () => {
       <OverviewContainer />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Overview
+export default Overview;
