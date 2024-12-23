@@ -232,5 +232,32 @@ fn list_all_nfts() -> Vec<(TokenId, Metadata)> {
     })
 }
 
+#[query(name = "icrc7_get_image")]
+fn icrc7_get_image(token_id: TokenId) -> Vec<u8> {
+    STATE.with(|state| {
+        let state = state.borrow();
+        state
+            .nfts
+            .get(&token_id)
+            .and_then(|nft| {
+                nft.metadata
+                    .iter()
+                    .find(|(key, _)| key == "image")
+                    .map(|(_, value)| value)
+            })
+            .and_then(|base64_image| base64::decode(base64_image).ok())
+            .unwrap_or_default()
+    })
+}
+
+// ------------------------------ Identity ------------------------------------------------
+
+// Return the caller's principal ID.
+#[query]
+fn whoami() -> String {
+    let caller = ic_cdk::caller();
+    caller.to_string()
+}
+
 // ------------------------------ Export Candid ----------------------------------------
 ic_cdk::export_candid!();

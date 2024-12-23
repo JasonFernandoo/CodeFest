@@ -1,18 +1,30 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState, RefObject, useRef } from "react";
 import { useDarkMode } from "../DarkModeContext";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
+import { LoginButton } from "./LoginButton";
 
-const Navbar = ({ footerRef }) => {
+interface NavbarProps {
+  footerRef: RefObject<HTMLElement>;
+}
+
+const Navbar = ({ footerRef }: NavbarProps) => {
   const { darkMode, toggleDarkMode } = useDarkMode();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+  const cartRef = useRef(null);
+  const navbarRef = useRef(null);
 
   const scrollToFooter = () => {
     if (footerRef.current) {
-      footerRef.current.scrollIntoView({ behavior: 'smooth' });
+      footerRef.current.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const toggleCart = () => {
+    setCartOpen(!cartOpen);
   };
 
   useEffect(() => {
@@ -24,9 +36,23 @@ const Navbar = ({ footerRef }) => {
       }
     };
 
+    const handleClickOutside = (event: { target: any; }) => {
+      if (
+        cartRef.current &&
+        !cartRef.current.contains(event.target) &&
+        navbarRef.current &&
+        !navbarRef.current.contains(event.target)
+      ) {
+        setCartOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
+    document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -35,9 +61,10 @@ const Navbar = ({ footerRef }) => {
   };
 
   return (
+    <>
     <div
-      className={`h-[70px] w-[100vw] fixed transition z-50 duration-500 ease ${
-        scrolled
+      className={`h-[70px] w-[100vw] fixed transition z-[1000] duration-500 ease ${
+        scrolled || cartOpen
           ? darkMode
             ? "bg-black text-white border-b-[1px]"
             : "bg-white text-black border-b-[1px]"
@@ -74,7 +101,21 @@ const Navbar = ({ footerRef }) => {
                   NFT
                 </Link>
               </li>
-              <li className="text-[16px] hover:text-[#898989]" onClick={scrollToFooter}>Contact</li>            </ul>
+              <li className="text-[16px] hover:text-[#898989]">
+                <Link
+                  to="/nft"
+                  className="no-underline text-inherit hover:text-[#898989]"
+                >
+                  Storage
+                </Link>
+              </li>
+              <li
+                className="text-[16px] hover:text-[#898989]"
+                onClick={scrollToFooter}
+              >
+                Contact
+              </li>{" "}
+            </ul>
           </div>
         </div>
         <div className="hidden md:flex items-center">
@@ -87,16 +128,16 @@ const Navbar = ({ footerRef }) => {
           </div>
         </div>
         <div className="flex items-center gap-[10px]">
-          <i className="far fa-user-circle h-[45px] font-semibold w-[120px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center gap-2 hover:bg-[#89898930] hover:cursor-pointer">
-            login
-          </i>
+          <LoginButton />
           <i
             className={`h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] cursor-pointer transform transition-transform duration-500 hover:rotate-12 ${
               darkMode ? "fas fa-sun" : "fas fa-moon"
             }`}
             onClick={toggleDarkMode}
           ></i>
-          <i className="fa-solid fa-shopping-cart h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] transform transition-transform duration-500 hover:rotate-12"></i>
+          <i className="fa-solid fa-wallet h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] transform transition-transform duration-500 hover:rotate-12"
+            onClick={toggleCart}
+          ></i>
           <div className="md:hidden">
             <button onClick={toggleMenu}>
               {menuOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
@@ -139,6 +180,21 @@ const Navbar = ({ footerRef }) => {
         </div>
       )}
     </div>
+    <div>
+    {cartOpen && (
+        <>
+          <div ref={cartRef} className={`fixed top-[70px] right-0 h-full w-[300px] shadow-lg transform transition-transform duration-500 translate-x-0 z-[900] ${darkMode ? 'bg-black' : 'bg-white'}`}>
+            <div className="p-4 flex flex-col text-start">
+              <h1 className="font-bold">WALLET</h1>
+              <p className="my-[5%] leading-tight">Connect your wallet to purchase our services.</p>
+              <button className="h-[40px] w-[270px] bg-[#b79ffc] rounded-[5px] text-white">CONNECT YOUR WALLET</button>
+            </div>
+          </div>
+          <div className="fixed inset-0 bg-black opacity-50 z-[800]" onClick={toggleCart}></div>
+        </>
+      )}
+    </div>
+    </>
   );
 };
 
