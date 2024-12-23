@@ -30,11 +30,16 @@ const Product = () => {
                     <img 
                         src="./hs.png" 
                         alt=""
-                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-30" />
+                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-0" />
                 </div>
-                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                <div 
+                    className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    style={{
+                        background: "linear-gradient(to right, rgba(255,0,255,0.3), rgba(8,100,120,0.3))"
+                    }}
+                >
                     <h2 className="text-xl md:text-2xl font-semibold">High Security</h2>
-                    <p className="text-sm md:text-base">
+                    <p className="text-sm md:text-base ">
                         Unique, encrypted data that cannot be forged.
                     </p>
                 </div>
@@ -51,9 +56,13 @@ const Product = () => {
                     <img 
                         src="./auth.png" 
                         alt=""
-                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-30" />
+                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-0" />
                 </div>
-                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20"
+                    style={{
+                        background: "linear-gradient(to right, rgba(147,51,234,0.3), rgba(59,130,246,0.3))"
+                    }}
+                >
                     <h2 className="text-xl md:text-2xl font-semibold">Guaranteed Authenticity</h2>
                     <p className="text-sm md:text-base">
                         Ensures that identity, certificates, and stamps are authentic and digitally valid.
@@ -72,9 +81,13 @@ const Product = () => {
                     <img 
                         src="./record.png" 
                         alt=""
-                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-30" />
+                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-0" />
                 </div>
-                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20"
+                    style={{
+                         background: "linear-gradient(to right, rgba(236,72,153,0.3), rgba(34,211,238,0.3))"
+                    }}
+                >
                     <h2 className=" text-xl md:text-2xl font-semibold">Permanent Record</h2>
                     <p className="text-sm md:text-base">
                         All data is securely stored on the blockchain and cannot be altered.
@@ -94,9 +107,13 @@ const Product = () => {
                     <img 
                         src="./verif.png" 
                         alt=""
-                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-30" />
+                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-0" />
                 </div>
-                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20"
+                    style={{
+                        background: "linear-gradient(to right, rgba(249,115,22,0.3), rgba(139,92,246,0.3))"
+                    }}
+                >
                     <h2 className=" text-xl md:text-2xl font-semibold">Instant Verification</h2>
                     <p className="text-sm md:text-base">
                         Simplifies the authentication process for documents or identity anytime, anywhere.
@@ -115,9 +132,13 @@ const Product = () => {
                     <img 
                         src="./portability.png" 
                         alt=""
-                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-30" />
+                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-0" />
                 </div>
-                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20"
+                    style={{
+                        background: "linear-gradient(to right, rgba(16,185,129,0.3), rgba(99,102,241,0.3))"
+                    }}
+                >
                     <h2 className="text-xl md:text-2xl font-semibold">Portability</h2>
                     <p className="text-sm md:text-base">
                         Easily accessible across digital platforms without geographical limitations.
@@ -136,9 +157,13 @@ const Product = () => {
                     <img 
                         src="./efficiency.png" 
                         alt=""
-                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-30" />
+                        className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-0" />
                 </div>
-                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20"
+                    style={{
+                         background: "linear-gradient(to right, rgba(244,63,94,0.3), rgba(168,85,247,0.3))"
+                    }}
+                >
                     <h2 className="text-xl md:text-2xl font-semibold">Efficiency</h2>
                     <p className="text-sm md:text-base">
                         Saves costs, time, and eliminates the need for physical documents.
