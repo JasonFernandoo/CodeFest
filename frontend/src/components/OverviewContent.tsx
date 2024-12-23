@@ -1,8 +1,30 @@
 import React from 'react'
 import { useDarkMode } from '../DarkModeContext'
+import { useInView } from 'react-intersection-observer';
 
 const OverviewContent = () => {
   const {darkMode} = useDarkMode();
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const { ref: ref2, inView: inView2 } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  const { ref: ref3, inView: inView3 } = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
+  });
+
+  const { ref: ref4, inView: inView4 } = useInView({
+    triggerOnce: true,
+    threshold: 0.4,
+  });
+
   return (
     <div className={`w-[95%]`}>
         <div className='w-[100%] h-[30vh] flex flex-col justify-center text-start' id="what-is-aman">
@@ -18,7 +40,12 @@ const OverviewContent = () => {
             </p>
         </div>
         <div className='w-[100%] h-[70vh] flex justify-between items-center'>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div
+                ref={ref}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>What is Aman?</h1>
                     <p>Aman is a blockchain-based platform for creating decentralized digital identities.</p>
@@ -30,7 +57,12 @@ const OverviewContent = () => {
                     <button className='h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white'>What is Aman?</button>
                 </div>
             </div>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>What is ICP?</h1>
                     <p>ICP is a decentralized platform for building secure, scalable applications.</p>
@@ -42,7 +74,12 @@ const OverviewContent = () => {
                     <button className='h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white'>What is Aman?</button>
                 </div>
             </div>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+            >                
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>What is Web3?</h1>
                     <p>Web3 is a decentralized internet powered by blockchain technology and cryptography.</p>
@@ -60,7 +97,12 @@ const OverviewContent = () => {
             <p className='text-[18px] mt-[3%]'>Lorem ipsum odor amet, consectetuer adipiscing elit. Orci tempus vehicula senectus risus tincidunt taciti molestie sollicitudin. At quis cubilia elementum magna luctus himenaeos sollicitudin viverra. Curabitur diam conubia condimentum aliquet quis ac litora ut magnis. Augue netus tortor blandit aenean parturient. Libero suscipit sapien malesuada arcu ligula iaculis.</p>
         </div>
         <div className='w-[100%] h-[70vh] flex justify-between items-center'>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref2}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView2 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>Find a wallet</h1>
                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
@@ -72,7 +114,12 @@ const OverviewContent = () => {
                     <button className='h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white'>What is Aman?</button>
                 </div>
             </div>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref2}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView2 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>What is a wallet?</h1>
                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
@@ -84,7 +131,12 @@ const OverviewContent = () => {
                     <button className='h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white'>What is Aman?</button>
                 </div>
             </div>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref2}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView2 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>ICP networks</h1>
                     <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
@@ -107,7 +159,12 @@ const OverviewContent = () => {
             </p>
         </div>
         <div className='w-[100%] h-[70vh] flex justify-between items-center'>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref3}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView3 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}  
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>Digital identity creation</h1>
                     <p>Aman allows users to create secure, blockchain-based digital identity cards.</p>
@@ -119,7 +176,12 @@ const OverviewContent = () => {
                     <button className='h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white'>What is digital identity?</button>
                 </div>
             </div>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref3}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView3 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}  
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>Secure verification</h1>
                     <p>It provides a tamper-proof way to verify identities without relying on centralized authorities.</p>
@@ -131,7 +193,12 @@ const OverviewContent = () => {
                     <button className='h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white'>What is secure verification?</button>
                 </div>
             </div>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref3}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView3 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}  
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>User control</h1>
                     <p>Users have full control over their identity data, with the ability to manage access.</p>
@@ -145,7 +212,12 @@ const OverviewContent = () => {
             </div>
         </div>
         <div className='w-[100%] h-[70vh] flex justify-between items-center'>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div 
+                ref={ref4}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView4 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}  
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>Blockchain integration</h1>
                     <p>Aman leverages the ICP network for decentralized, transparent, and immutable identity management.</p>
@@ -157,7 +229,12 @@ const OverviewContent = () => {
                     <button className='h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white'>What is blockchain integration?</button>
                 </div>
             </div>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center'>
+            <div
+                ref={ref4}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+                    inView4 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+            >
                 <div className='flex flex-col text-start w-[80%]'>
                     <h1 className='font-bold text-[22px]'>Global access</h1>
                     <p>Aman enables users to access and use their digital identities globally, supporting cross-border authentication.</p>
@@ -169,7 +246,12 @@ const OverviewContent = () => {
                     <button className='h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white'>What is global access?</button>
                 </div>
             </div>
-            <div className='h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-gradient-to-l from-[#cc98fb] to-[#a1a6fc] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-center items-center'>
+            <div 
+                ref={ref4}
+                className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-gradient-to-l from-[#cc98fb] to-[#a1a6fc] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-center items-center transition-transform duration-700 ease-out ${
+                    inView4 ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+                }`}
+            >
                 <div className='flex flex-col text-start w-[80%] h-[35%]'>
                     <h1 className='font-bold text-[22px]'>Emerging use cases</h1>
                     <p>There are also other prominent industries being created or improved with ICP:</p>
