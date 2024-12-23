@@ -232,5 +232,14 @@ fn list_all_nfts() -> Vec<(TokenId, Metadata)> {
     })
 }
 
+// ------------------------------ Identity ------------------------------------------------
+
+// Return the caller's principal ID.
+#[query]
+fn whoami() -> String {
+    let caller = ic_cdk::caller();
+    caller.to_string()
+}
+
 // ------------------------------ Export Candid ----------------------------------------
 ic_cdk::export_candid!();

@@ -3,6 +3,7 @@ import { useDarkMode } from "../DarkModeContext";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
+import { LoginButton } from "./LoginButton";
 
 const Navbar = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
@@ -82,9 +83,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-[10px]">
-          <i className="far fa-user-circle h-[45px] font-semibold w-[120px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center gap-2 hover:bg-[#89898930] hover:cursor-pointer">
-            login
-          </i>
+          <LoginButton />
           <i
             className={`h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] cursor-pointer transform transition-transform duration-500 hover:rotate-12 ${
               darkMode ? "fas fa-sun" : "fas fa-moon"
