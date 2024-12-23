@@ -1,5 +1,4 @@
-import React from 'react';
-import { useDarkMode } from '../DarkModeContext';
+import { useDarkMode } from "../DarkModeContext";
 import { motion } from "framer-motion";
 
 const Product = () => {
@@ -7,14 +6,21 @@ const Product = () => {
 
   return (
     <>
-      <div className={`max-w-full w-full flex flex-col justify-start items-center py-10 px-4 ${darkMode ? 'bg-black text-white text-3xl' : 'bg-white text-black text-3xl'}`}>
-        <motion.h1 
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold leading-tight mt-9 text-center">
-              Benefits
+      <div
+        className={`max-w-full w-full flex flex-col justify-start items-center py-10 px-4 ${
+          darkMode
+            ? "bg-black text-white text-3xl"
+            : "bg-white text-black text-3xl"
+        }`}
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-4xl md:text-5xl font-bold leading-tight mt-9 text-center"
+        >
+          Benefits
         </motion.h1>
 
         {/* Service Boxes */}

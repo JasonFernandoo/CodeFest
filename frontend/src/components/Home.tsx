@@ -1,5 +1,4 @@
-import React from 'react';
-import { useDarkMode } from '../DarkModeContext';
+import { useDarkMode } from "../DarkModeContext";
 
 const Home = () => {
   const { darkMode } = useDarkMode();

@@ -13,12 +13,13 @@ import {
 import { Input as ShadInput } from "@/components/ui/input"; // Adjust import path
 import { Button } from "@/components/ui/button"; // Adjust import path
 import { useDarkMode } from "../DarkModeContext";
+import { backend } from "declarations/backend";
 
 const formSchema = z.object({
   image: z
     .any()
     .refine((file) => file instanceof File, { message: "File is required" }),
-  name: z.string().nonempty("Image name is required"),
+  name: z.string().min(1, { message: "Image name is required" }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -31,8 +32,15 @@ export default function Input() {
     resolver: zodResolver(formSchema),
   });
 
-  function onSubmit(values: FormValues) {
+  async function onSubmit(values: FormValues) {
     console.log(values);
+    const arrayBuffer = await values.image.arrayBuffer();
+    backend.icrc7_mint(
+      "principal",
+      "description",
+      values.name,
+      new Uint8Array(arrayBuffer)
+    );
   }
 
   return (
@@ -76,9 +84,9 @@ export default function Input() {
                       <label
                         htmlFor="image-upload"
                         className={`w-full h-64 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer transition-colors duration-300 ${
-                          darkMode 
-                            ? 'border-gray-600 hover:border-gray-500' 
-                            : 'border-gray-300 hover:border-gray-400'
+                          darkMode
+                            ? "border-gray-600 hover:border-gray-500"
+                            : "border-gray-300 hover:border-gray-400"
                         }`}
                       >
                         {previewUrl ? (
@@ -89,20 +97,24 @@ export default function Input() {
                           />
                         ) : (
                           <>
-                            <svg 
-                              className="w-12 h-12 mb-3 text-gray-400" 
-                              fill="none" 
-                              stroke="currentColor" 
+                            <svg
+                              className="w-12 h-12 mb-3 text-gray-400"
+                              fill="none"
+                              stroke="currentColor"
                               viewBox="0 0 24 24"
                             >
-                              <path 
-                                strokeLinecap="round" 
-                                strokeLinejoin="round" 
-                                strokeWidth="2" 
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
                                 d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                               />
                             </svg>
-                            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                            <p
+                              className={`text-sm ${
+                                darkMode ? "text-gray-400" : "text-gray-500"
+                              }`}
+                            >
                               Click to upload an image
                             </p>
                           </>
@@ -131,8 +143,8 @@ export default function Input() {
             />
 
             {/* Submit */}
-            <Button 
-              className="w-full h-full transition-all duration-300 ease-in-out text-white font-semibold transform hover:scale-[0.98]" 
+            <Button
+              className="w-full h-full transition-all duration-300 ease-in-out text-white font-semibold transform hover:scale-[0.98]"
               style={{
                 background: "linear-gradient(to right, #FF00FF, #086478)",
                 backgroundSize: "200% auto",
@@ -144,7 +156,7 @@ export default function Input() {
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundPosition = "left center";
               }}
-              type="submit" 
+              type="submit"
               variant="default"
             >
               Submit
