@@ -5,13 +5,24 @@ import OverviewContent from "./OverviewContent";
 const OverviewContainer = () => {
   const { darkMode } = useDarkMode();
   return (
-    <div id="overview-content" className={`h-auto w-[100vw] flex transition duration-500 ${darkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
-      <div className='h-[253vh] w-[30%] flex justify-center mt-[3%]'>
-        <div className='w-[100%] flex text-start'>
+    <div 
+      id="overview-content" 
+      className={`min-h-screen w-full 
+        flex flex-col md:flex-row 
+        transition duration-500 
+        ${darkMode ? 'bg-black text-white' : 'bg-white text-black'}
+      `}
+    >
+      <div className='w-full md:w-[30%] 
+        min-h-[50vh] md:min-h-screen 
+        flex justify-center 
+        pt-4 md:pt-[3%]'
+      >
+        <div className='w-full flex text-start'>
           <OverviewNavbar />
         </div>
       </div>
-      <div className='h-auto w-[70%] flex'>
+      <div className='w-full md:w-[70%] flex'>
         <OverviewContent />
       </div>
     </div>

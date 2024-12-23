@@ -120,7 +120,7 @@ const Navbar = ({ footerRef }) => {
               className="text-[16px] hover:text-[#898989]"
               onClick={toggleMenu}
             >
-              About
+              NFT
             </li>
             <li
               className="text-[16px] hover:text-[#898989]"
