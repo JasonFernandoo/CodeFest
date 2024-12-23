@@ -39,7 +39,9 @@ const Navbar = () => {
               <li className="text-[16px]">
                 <Link to="/overview" className="no-underline text-inherit hover:text-[#898989]">Overview</Link>
               </li>
-              <li className="text-[16px] hover:text-[#898989]">About</li>
+              <li className="text-[16px]">
+                <Link to="/input" className="no-underline text-inherit hover:text-[#898989]">About</Link>
+              </li>
               <li className="text-[16px] hover:text-[#898989]">Contact</li>
             </ul>
           </div>
