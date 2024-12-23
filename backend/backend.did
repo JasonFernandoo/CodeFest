@@ -2,6 +2,7 @@ type Result = variant { Ok : text; Err : text };
 service : () -> {
   icrc7_balance_of : (text) -> (nat64) query;
   icrc7_burn : (nat64) -> (Result);
+  icrc7_get_image : (nat64) -> (blob) query;
   icrc7_metadata : (nat64) -> (opt vec record { text; text }) query;
   icrc7_mint : (text, text, text, blob) -> (nat64);
   icrc7_owner_of : (nat64) -> (opt text) query;

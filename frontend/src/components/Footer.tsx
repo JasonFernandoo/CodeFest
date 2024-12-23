@@ -121,9 +121,9 @@ const Footer = forwardRef<HTMLDivElement>((_, ref) => {
                   </div>
                 </>
               ) : (
-                <>
+                <div className="flex flex-col">
                   <img
-                    className="min-w-[150px] h-[150px] rounded-full"
+                    className="w-[90px] h-[90px] rounded-full"
                     src={defaultImage}
                     alt="Default"
                   />
@@ -132,7 +132,7 @@ const Footer = forwardRef<HTMLDivElement>((_, ref) => {
                     identity into a unique, secure, and easily accessible asset
                     through blockchain technology.
                   </p>
-                </>
+                </div>
               )}
             </div>
           </div>
