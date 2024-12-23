@@ -1,4 +1,6 @@
 use base64::encode;
+use candid::Principal;
+use ic_cdk::api::{call::call, caller, management_canister::main as mgmt};
 use ic_cdk_macros::{init, query, update};
 use ic_stable_structures::{
     memory_manager::{MemoryId, MemoryManager, VirtualMemory},
@@ -45,8 +47,6 @@ struct NFT {
 struct NFTCanister {
     /// Map each token_id to its NFT data (owner + metadata).
     nfts: HashMap<TokenId, NFT>,
-    /// Next token_id to assign when minting a new token.
-    next_token_id: TokenId,
     /// For quick “balance_of” queries, track how many tokens each principal owns.
     balances: HashMap<PrincipalId, HashSet<TokenId>>,
 }
@@ -81,7 +81,27 @@ impl NFTCanister {
 
 /// Mint a new NFT and return its `token_id`.
 #[update(name = "icrc7_mint")]
-fn icrc7_mint(to: PrincipalId, description: String, name: String, image: Vec<u8>) -> TokenId {
+async fn icrc7_mint(
+    to: PrincipalId,
+    description: String,
+    name: String,
+    image: Vec<u8>,
+) -> Result<TokenId, String> {
+    // 1) Get random bytes from the management canister.
+    //    raw_rand returns a tuple containing Vec<u8>, so destructure it.
+    let (random_bytes,): (Vec<u8>,) = call(Principal::management_canister(), "raw_rand", ())
+        .await
+        .map_err(|err| format!("Failed to call raw_rand: {:?}", err))?;
+
+    // 2) Convert the first 8 bytes into a u64. (Check length for safety)
+    if random_bytes.len() < 8 {
+        return Err("Not enough bytes returned from raw_rand".into());
+    }
+    let mut buf = [0u8; 8];
+    buf.copy_from_slice(&random_bytes[0..8]);
+    let random_id = u64::from_le_bytes(buf);
+
+    // 3) Build your metadata and store the NFT.
     STATE.with(|state| {
         let mut state = state.borrow_mut();
 
@@ -96,31 +116,36 @@ fn icrc7_mint(to: PrincipalId, description: String, name: String, image: Vec<u8>
             ("image".to_string(), base64_image),
         ];
 
-        // Generate a unique token ID.
-        let token_id = state.next_token_id;
+        // If collisions are a concern, you need logic to check if `random_id` already exists.
+        // For demonstration, we’ll assume collisions are rare enough. In production,
+        // you may consider a loop until we find an unused ID.
+        if state.nfts.contains_key(&random_id) {
+            return Err(format!(
+                "Random collision: token_id {} already exists. Try again.",
+                random_id
+            ));
+        }
 
-        // Create and store the NFT.
+        // 4) Insert NFT in the map.
         state.nfts.insert(
-            token_id,
+            random_id,
             NFT {
                 owner: to.clone(),
                 metadata,
             },
         );
-        state.internal_add_token_to_owner(&to, token_id);
+        // Update the balances.
+        state.internal_add_token_to_owner(&to, random_id);
 
-        // Update the next token ID
-        state.next_token_id += 1;
-
-        ic_cdk::println!("Minted NFT with Token ID: {}", token_id);
-        token_id
+        ic_cdk::println!("Minted NFT with Token ID: {}", random_id);
+        Ok(random_id)
     })
 }
 
 /// Transfer an NFT from the caller to `new_owner`.
 #[update(name = "icrc7_transfer")]
 fn icrc7_transfer(token_id: TokenId, new_owner: PrincipalId) -> Result<String, String> {
-    let caller = ic_cdk::caller().to_text();
+    let caller = caller().to_text();
     STATE.with(|state| {
         let mut state = state.borrow_mut();
 
@@ -197,7 +222,7 @@ fn icrc7_balance_of(owner: PrincipalId) -> u64 {
 /// Burn or “delete” an NFT by `token_id`.
 #[update(name = "icrc7_burn")]
 fn icrc7_burn(token_id: TokenId) -> Result<String, String> {
-    let caller = ic_cdk::caller().to_text();
+    let caller = caller().to_text();
     STATE.with(|state| {
         let mut state = state.borrow_mut();
         if let Some(nft) = state.nfts.remove(&token_id) {
@@ -232,6 +257,7 @@ fn list_all_nfts() -> Vec<(TokenId, Metadata)> {
     })
 }
 
+/// Retrieve the raw image data by `token_id` (decode from the stored Base64).
 #[query(name = "icrc7_get_image")]
 fn icrc7_get_image(token_id: TokenId) -> Vec<u8> {
     STATE.with(|state| {
@@ -251,12 +277,10 @@ fn icrc7_get_image(token_id: TokenId) -> Vec<u8> {
 }
 
 // ------------------------------ Identity ------------------------------------------------
-
 // Return the caller's principal ID.
 #[query]
 fn whoami() -> String {
-    let caller = ic_cdk::caller();
-    caller.to_string()
+    caller().to_string()
 }
 
 // ------------------------------ Export Candid ----------------------------------------
