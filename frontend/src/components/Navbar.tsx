@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDarkMode } from '../DarkModeContext';
 import { Link } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,24 +24,27 @@ const Navbar = () => {
     };
   }, []);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <div className={`h-[70px] w-[100vw] fixed transition z-50 duration-500 ease ${scrolled ? (darkMode ? 'bg-black text-white border-b-[1px]' : 'bg-white text-black border-b-[1px]') : (darkMode ? 'bg-transparent text-white' : 'bg-transparent text-black')}`}>
-      <div className="h-[70px] w-full flex justify-between">
-        <div className="h-full w-[30%] flex items-center">
-          <Link to="/"><img src="/logo.png" className="h-[50px] w-[50px] ml-[50px] hover:cursor-pointer" alt="logo" /></Link>
-          {/* <p className="text-[24px] font-bold ml-[20px]">
-            <Link to="/" className="no-underline text-inherit hover:text-[#898989]">Aman</Link>
-          </p> */}
-          <div className="h-[40px] w-[2px] bg-gray-200 ml-[20px]"></div>
-          <ul className="flex items-center gap-[20px] ml-[20px] font-bold hover:cursor-pointer">
-            <li className="text-[16px]">
-              <Link to="/overview" className="no-underline text-inherit hover:text-[#898989]">Overview</Link>
-            </li>
-            <li className="text-[16px] hover:text-[#898989]">About</li>
-            <li className="text-[16px] hover:text-[#898989]">Contact</li>
-          </ul>
+      <div className="h-[70px] w-full flex justify-between items-center px-4 md:px-8">
+        <div className="flex items-center">
+          <Link to="/"><img src={logo} className="h-[50px] w-[50px] hover:cursor-pointer" alt="logo" /></Link>
+          <div className="hidden md:flex items-center ml-4">
+            <div className="h-[40px] w-[2px] bg-gray-200"></div>
+            <ul className="flex items-center gap-[20px] ml-[20px] font-bold hover:cursor-pointer">
+              <li className="text-[16px]">
+                <Link to="/overview" className="no-underline text-inherit hover:text-[#898989]">Overview</Link>
+              </li>
+              <li className="text-[16px] hover:text-[#898989]">About</li>
+              <li className="text-[16px] hover:text-[#898989]">Contact</li>
+            </ul>
+          </div>
         </div>
-        <div className="h-full w-[30%] flex justify-center items-center">
+        <div className="hidden md:flex items-center">
           <div className="h-[45px] w-[400px] pl-[20px] bg-[#d9d9d940] rounded-[10px] border-[0px] flex items-center hover:bg-[#89898930]">
             <i className="fa-solid fa-magnifying-glass"></i>
             <input 
@@ -47,14 +53,37 @@ const Navbar = () => {
             />
           </div>
         </div>
-        <div className="h-full w-[20%] flex justify-end items-center mr-[40px] gap-[10px]">
+        <div className="flex items-center gap-[10px]">
           <i 
             className="fas fa-moon h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] cursor-pointer"
             onClick={toggleDarkMode}
           ></i>
           <i className="fa-solid fa-shopping-cart h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930]"></i>
+          <div className="md:hidden">
+            <button onClick={toggleMenu}>
+              {menuOpen ? <FaTimes size={30} /> : <FaBars size={30} />}
+            </button>
+          </div>
         </div>
       </div>
+      {menuOpen && (
+        <div className="md:hidden flex flex-col items-center bg-white dark:bg-black text-black dark:text-white">
+          <ul className="flex flex-col items-center gap-[20px] font-bold hover:cursor-pointer">
+            <li className="text-[16px]">
+              <Link to="/overview" className="no-underline text-inherit hover:text-[#898989]" onClick={toggleMenu}>Overview</Link>
+            </li>
+            <li className="text-[16px] hover:text-[#898989]" onClick={toggleMenu}>About</li>
+            <li className="text-[16px] hover:text-[#898989]" onClick={toggleMenu}>Contact</li>
+          </ul>
+          <div className="h-[45px] w-[90%] pl-[20px] bg-[#d9d9d940] rounded-[10px] border-[0px] flex items-center hover:bg-[#89898930] mt-4">
+            <i className="fa-solid fa-magnifying-glass"></i>
+            <input 
+              className="h-full w-[80%] ml-[20px] text-[18px] bg-transparent focus:outline-none" 
+              placeholder="Search" 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
