@@ -1,5 +1,4 @@
-import React from 'react'
-import { useDarkMode } from '../DarkModeContext'
+import { useDarkMode } from "../DarkModeContext";
 
 const Profile = () => {
   const { darkMode } = useDarkMode();
@@ -22,7 +21,7 @@ const Profile = () => {
             <button className='h-[45px] w-[25.5vw] rounded-[5px] bg-[#b79ffc] text-white'>LOGOUT</button>
         </div>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
