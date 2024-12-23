@@ -142,7 +142,7 @@ const Footer = forwardRef<HTMLDivElement>((_, ref) => {
             darkMode ? "border-white" : ""
           }`}
         >
-          <p>&copy; 2024 Aman. All Rights Reserved</p>
+         <p>&copy; 2024 Aman. All Rights Reserved</p>
         </div>
       </div>
     </footer>
