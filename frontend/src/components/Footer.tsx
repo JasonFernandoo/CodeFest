@@ -56,33 +56,33 @@ const Footer = forwardRef<HTMLDivElement>((_, ref) => {
     setSelectedContact(contact);
   };
 
-  const selectedContactDetails = selectedContact
-    ? contacts[selectedContact]
-    : null;
+  const selectedContactDetails = selectedContact ? contacts[selectedContact] : null;
 
   return (
-    <footer ref={ref} className={`h-[35vh] w-[100vw]`}>
+    <footer ref={ref} className="min-h-[35vh] w-full">
       <div
-        className={`h-full w-full flex flex-col justify-center items-center ${
-          darkMode ? "bg-black text-white" : "bg-white text-black"
-        }`}
+        className={`w-full flex flex-col justify-center items-center py-8 
+        ${darkMode ? "bg-black text-white" : "bg-white text-black"}`}
       >
-        <div className="h-[80%] w-[97.5%] flex justify-center items-center">
-          <div className="h-[85%] w-[25%] flex flex-col items-start">
-            <h1 className="text-[32px] font-bold">AMAN</h1>
-            <p className="font-bold text-[#b79ffc] mt-[-2%] mb-[7%]">
+        <div className="w-[95%] flex flex-col md:flex-row justify-center items-start gap-8 md:gap-4">
+          {/* Logo Section */}
+          <div className="w-full md:w-1/4 flex flex-col items-center md:items-start">
+            <h1 className="text-2xl md:text-3xl font-bold">AMAN</h1>
+            <p className="font-bold text-[#b79ffc] my-2 text-center md:text-left">
               DIGITAL CHAIN IDENTITY
             </p>
-            <i className="fab fa-instagram mt-[2.5%] text-[22px] text-white p-[10px] rounded-[50%] bg-[#b79ffc] hover:cursor-pointer"></i>
+            <i className="fab fa-instagram text-xl md:text-2xl text-white p-2 rounded-full bg-[#b79ffc] hover:cursor-pointer"></i>
           </div>
-          <div className="h-full w-[60%] ml-[10%] flex justify-between items-center">
-            <div className="h-[85%] w-[30%] flex flex-col">
-              <h1 className="text-start text-[20px] font-bold">CONTACT US</h1>
-              <ul className="text-start text-[#898989]">
+
+          {/* Contact Section */}
+          <div className="w-full md:w-3/4 flex flex-col md:flex-row gap-8 md:gap-4">
+            <div className="w-full md:w-1/3">
+              <h1 className="text-xl md:text-2xl font-bold text-center md:text-left mb-4">CONTACT US</h1>
+              <ul className="text-[#898989] space-y-2 text-center md:text-left">
                 {Object.keys(contacts).map((contact) => (
                   <li
                     key={contact}
-                    className="hover:text-[#b79ffc] hover:cursor-pointer"
+                    className="hover:text-[#b79ffc] hover:cursor-pointer text-sm md:text-base"
                     onClick={() => changeContactInfo(contact)}
                   >
                     {contact}
@@ -90,57 +90,48 @@ const Footer = forwardRef<HTMLDivElement>((_, ref) => {
                 ))}
               </ul>
             </div>
-            <div className="h-[95%] w-[60%] flex">
+
+            {/* Contact Details Section */}
+            <div className="w-full md:w-2/3 flex flex-col md:flex-row items-center md:items-start gap-4">
               {selectedContactDetails ? (
-                <>
-                  <div className="flex flex-col text-start ml-[5%]">
-                    <h1 className="w-[400px] text-start text-[20px] text-[#b79ffc]">
-                      {selectedContact}
-                    </h1>
-                    <div className="my-[3%] text-[#898989]">
-                      <p>Email: {selectedContactDetails.email}</p>
-                      <p>Instagram: {selectedContactDetails.instagram}</p>
-                      <p>Github: {selectedContactDetails.github}</p>
-                    </div>
-                    <div className="flex text-[#b79ffc] gap-2 text-[26px]">
-                      <a
-                        href={selectedContactDetails.link_instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <i className="fab fa-instagram hover:cursor-pointer"></i>
-                      </a>
-                      <a
-                        href={selectedContactDetails.link_github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <i className="fab fa-github hover:cursor-pointer"></i>
-                      </a>
-                    </div>
+                <div className="flex flex-col items-center md:items-start">
+                  <h1 className="text-xl text-[#b79ffc] text-center md:text-left">
+                    {selectedContact}
+                  </h1>
+                  <div className="my-2 text-[#898989] text-center md:text-left">
+                    <p className="text-sm md:text-base">Email: {selectedContactDetails.email}</p>
+                    <p className="text-sm md:text-base">Instagram: {selectedContactDetails.instagram}</p>
+                    <p className="text-sm md:text-base">Github: {selectedContactDetails.github}</p>
                   </div>
-                </>
+                  <div className="flex gap-4 text-[#b79ffc] text-2xl">
+                    <a href={selectedContactDetails.link_instagram} target="_blank" rel="noopener noreferrer">
+                      <i className="fab fa-instagram hover:cursor-pointer"></i>
+                    </a>
+                    <a href={selectedContactDetails.link_github} target="_blank" rel="noopener noreferrer">
+                      <i className="fab fa-github hover:cursor-pointer"></i>
+                    </a>
+                  </div>
+                </div>
               ) : (
-                <div className="flex flex-col">
+                <div className="flex flex-col md:flex-row items-center gap-4">
                   <img
-                    className="w-[90px] h-[90px] rounded-full"
+                    className="w-24 h-24 md:w-32 md:h-32 rounded-full"
                     src={defaultImage}
                     alt="Default"
                   />
-                  <p className="w-[400px] ml-[5%] text-start">
-                    AMAN is a trusted solution to transform your digital
-                    identity into a unique, secure, and easily accessible asset
-                    through blockchain technology.
+                  <p className="text-sm md:text-base text-center md:text-left max-w-md">
+                    AMAN is a trusted solution to transform your digital identity into a unique, 
+                    secure, and easily accessible asset through blockchain technology.
                   </p>
                 </div>
               )}
             </div>
           </div>
         </div>
-        <div
-          className={`h-[20%] w-[97.5%] flex justify-center items-center border-t-[0.1px] ${
-            darkMode ? "border-white" : ""
-          }`}
+
+        {/* Copyright Section */}
+        <div className={`w-[95%] mt-8 pt-4 text-center border-t-[0.1px] text-sm md:text-base
+          ${darkMode ? "border-white" : "border-gray-200"}`}
         >
          <p>&copy; 2024 Aman. All Rights Reserved</p>
         </div>
