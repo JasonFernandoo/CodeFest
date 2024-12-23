@@ -65,7 +65,7 @@ const Navbar = () => {
                   to="/input"
                   className="no-underline text-inherit hover:text-[#898989]"
                 >
-                  About
+                  NFT
                 </Link>
               </li>
               <li className="text-[16px] hover:text-[#898989]">Contact</li>
@@ -84,7 +84,7 @@ const Navbar = () => {
         <div className="flex items-center gap-[10px]">
           <i className="far fa-user-circle h-[45px] font-semibold w-[120px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center gap-2 hover:bg-[#89898930] hover:cursor-pointer">
             login
-          </i>       
+          </i>
           <i
             className={`h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] cursor-pointer transform transition-transform duration-500 hover:rotate-12 ${
               darkMode ? "fas fa-sun" : "fas fa-moon"
