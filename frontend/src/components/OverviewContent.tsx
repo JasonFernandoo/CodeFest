@@ -1,6 +1,10 @@
+// import React from 'react'
+// import { useDarkMode } from '../DarkModeContext'
 import { useInView } from "react-intersection-observer";
 
 const OverviewContent = () => {
+  // const {darkMode} = useDarkMode();
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -22,11 +26,13 @@ const OverviewContent = () => {
   });
 
   return (
-    <div className="w-full px-4 md:px-8 lg:px-12 xl:px-20 mt-4 md:mt-8">
-      {/* Section Headers */}
-      <div className="min-h-[30vh] w-full flex flex-col justify-center text-start mb-12 md:mb-16">
-        <h1 className="text-2xl md:text-4xl font-bold">Know better about Aman</h1>
-        <p className="text-base md:text-lg mt-4 md:mt-6 leading-relaxed">
+    <div className={`w-[95%] mt-[7%]`}>
+      <div
+        className="w-[100%] h-[30vh] flex flex-col justify-center text-start"
+        id="what-is-aman"
+      >
+        <h1 className="text-[30px] font-bold">Know better about Aman</h1>
+        <p className="text-[18px] mt-[3%]">
           Aman is a Web3 platform that leverages blockchain technology to create
           secure, decentralized digital identity cards and manage critical
           assets like certificates, stamps, and seals. As a platform that
@@ -41,79 +47,78 @@ const OverviewContent = () => {
           and fully under your control.
         </p>
       </div>
-
-      {/* Card Containers */}
-      <div className="w-full flex flex-col md:flex-row gap-6 md:gap-8 mb-16 md:mb-24">
-        {/* Card Component */}
-        <div ref={ref}
-          className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-            border-[0.5px] dark:border-0 
-            flex flex-col justify-between items-center 
-            transition-transform duration-700 ease-out
-            ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
+      <div className="w-[100%] h-[70vh] flex justify-between items-center">
+        <div
+          ref={ref}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
         >
-          <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-            <h2 className="text-xl md:text-2xl font-bold mb-2">What is Aman?</h2>
-            <p className="text-sm md:text-base">
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">What is Aman?</h1>
+            <p>
               Aman is a blockchain-based platform for creating decentralized
               digital identities.
             </p>
           </div>
-          
-          <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-          <div className="w-full flex items-center justify-center">
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
             <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
               What is Aman?
             </button>
           </div>
         </div>
-        <div ref={ref}
-          className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-            border-[0.5px] dark:border-0 
-            flex flex-col justify-between items-center 
-            transition-transform duration-700 ease-out
-            ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
+        <div
+          ref={ref}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
         >
-          <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-            <h2 className="text-xl md:text-2xl font-bold mb-2">What is ICP?</h2>
-            <p className="text-sm md:text-base">
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">What is ICP?</h1>
+            <p>
               ICP is a decentralized platform for building secure, scalable
               applications.
             </p>
           </div>
-          
-          <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-          <div className="w-full flex items-center justify-center">
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
             <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
               What is Aman?
             </button>
           </div>
         </div>
-        <div ref={ref}
-          className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-            border-[0.5px] dark:border-0 
-            flex flex-col justify-between items-center 
-            transition-transform duration-700 ease-out
-            ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
+        <div
+          ref={ref}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
         >
-          <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-            <h2 className="text-xl md:text-2xl font-bold mb-2">What is Web3?</h2>
-            <p className="text-sm md:text-base">
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">What is Web3?</h1>
+            <p>
               Web3 is a decentralized internet powered by blockchain technology
               and cryptography.
             </p>
           </div>
-          
-          <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-          <div className="w-full flex items-center justify-center">
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
             <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
               What is Aman?
             </button>
           </div>
         </div>
       </div>
-      <div className="w-full min-h-[30vh] flex flex-col justify-center text-start" 
-        id="how-to-use-aman">
+      <div
+        className="w-[100%] h-[30vh] flex flex-col justify-center text-start"
+        id="how-to-use-aman"
+      >
         <h1 className="text-[30px] font-bold">How do I use Aman?</h1>
         <p className="text-[18px] mt-[3%]">
           Lorem ipsum odor amet, consectetuer adipiscing elit. Orci tempus
@@ -124,79 +129,79 @@ const OverviewContent = () => {
           malesuada arcu ligula iaculis.
         </p>
       </div>
-      <div className="w-full h-auto flex flex-col md:flex-row 
-        justify-start md:justify-between items-start 
-        gap-6 md:gap-8 ">
-        <div ref={ref}
-          className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-            border-[0.5px] dark:border-0 
-            flex flex-col justify-between items-center 
-            transition-transform duration-700 ease-out
-            ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
+      <div className="w-[100%] h-[70vh] flex justify-between items-center">
+        <div
+          ref={ref2}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView2 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
         >
-          <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-            <h2 className="text-xl md:text-2xl font-bold mb-2">Find a wallet</h2>
-            <p className="text-sm md:text-base">
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">Find a wallet</h1>
+            <p>
               Discover wallets compatible with Web3 to securely store and manage
               your digital assets.
             </p>
           </div>
-          
-          <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-          
-          <button className="w-full py-3 bg-[#b79ffc] hover:bg-[#9d82e8] 
-            rounded-[5px] text-white">
-            What is Aman?
-          </button>
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
+              What is Aman?
+            </button>
+          </div>
         </div>
-
-        <div ref={ref2}
-          className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-            border-[0.5px] dark:border-0 
-            flex flex-col justify-between items-center 
-            transition-transform duration-700 ease-out
-            ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
+        <div
+          ref={ref2}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView2 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
         >
-          <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-            <h2 className="text-xl md:text-2xl font-bold mb-2">What is a wallet</h2>
-            <p className="text-sm md:text-base">
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">What is a wallet?</h1>
+            <p>
               A wallet is a tool that helps you securely store, send, and
               receive cryptocurrencies or digital assets.
             </p>
           </div>
-          
-          <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-          
-          <button className="w-full py-3 bg-[#b79ffc] hover:bg-[#9d82e8] rounded-[5px] text-white">
-            What is Aman?
-          </button>
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
+              What is Aman?
+            </button>
+          </div>
         </div>
-
-        <div ref={ref2}
-          className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-            border-[0.5px] dark:border-0 
-            flex flex-col justify-between items-center 
-            transition-transform duration-700 ease-out
-            ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
+        <div
+          ref={ref2}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView2 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
         >
-          <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-            <h2 className="text-xl md:text-2xl font-bold mb-2">ICP networks</h2>
-            <p className="text-sm md:text-base">
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">ICP networks</h1>
+            <p>
               {" "}
               An introduction to Internet Computer Protocol (ICP) and its role
               in powering scalable decentralized applications.
             </p>
           </div>
-          
-          <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-          
-          <button className="w-full py-3 bg-[#b79ffc] hover:bg-[#9d82e8] rounded-[5px] text-white">
-            What is Aman?
-          </button>
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
+              What is Aman?
+            </button>
+          </div>
         </div>
       </div>
-      <div className="w-full min-h-[30vh] flex flex-col justify-center text-start" 
-        id="what-is-aman-used-for">
+      <div
+        className="w-[100%] h-[30vh] flex flex-col justify-center text-start"
+        id="what-is-aman-used-for"
+      >
         <h1 className="text-[30px] font-bold">What is Aman use for?</h1>
         <p className="text-[18px] mt-[3%]">
           Aman has paved the way for the development of new products and
@@ -204,121 +209,115 @@ const OverviewContent = () => {
           still in the early stages, there’s plenty to look forward to.
         </p>
       </div>
-      <div className="w-full h-auto flex flex-col md:flex-row 
-        justify-start md:justify-between items-start 
-        gap-6 md:gap-8 ">
-        <div ref={ref3}
-            className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-              border-[0.5px] dark:border-0 
-              flex flex-col justify-between items-center 
-              transition-transform duration-700 ease-out
-              ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
-          >
-            <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-              <h2 className="text-xl md:text-2xl font-bold mb-2">Digital identity creation</h2>
-              <p className="text-sm md:text-base">
-                Aman allows users to create secure, blockchain-based digital
-                identity cards, certification, and duty stamps.
-              </p>
-            </div>
-            
-            <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-            
-            <button className="w-full py-3 bg-[#b79ffc] hover:bg-[#9d82e8] 
-              rounded-[5px] text-white">
+      <div className="w-[100%] h-[70vh] flex justify-between items-center">
+        <div
+          ref={ref3}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView3 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
+        >
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">Digital identity creation</h1>
+            <p>
+              Aman allows users to create secure, blockchain-based digital
+              identity cards, certification, and duty stamps.
+            </p>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
               What is digital identity?
             </button>
           </div>
-
-          <div ref={ref3}
-            className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-              border-[0.5px] dark:border-0 
-              flex flex-col justify-between items-center 
-              transition-transform duration-700 ease-out
-              ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
-          >
-            <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-              <h2 className="text-xl md:text-2xl font-bold mb-2">Secure verification</h2>
-              <p className="text-sm md:text-base">
-                It provides a tamper-proof way to verify identities without
-                relying on centralized authorities.
-              </p>
-            </div>
-            
-            <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-            
-            <button className="w-full py-3 bg-[#b79ffc] hover:bg-[#9d82e8] rounded-[5px] text-white">
+        </div>
+        <div
+          ref={ref3}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView3 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
+        >
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">Secure verification</h1>
+            <p>
+              It provides a tamper-proof way to verify identities without
+              relying on centralized authorities.
+            </p>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
               What is secure verification?
             </button>
           </div>
-
-          <div ref={ref3}
-            className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-              border-[0.5px] dark:border-0 
-              flex flex-col justify-between items-center 
-              transition-transform duration-700 ease-out
-              ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
-          >
-            <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-              <h2 className="text-xl md:text-2xl font-bold mb-2">User Control</h2>
-              <p className="text-sm md:text-base">
-                Users have full control over their identity data, with the ability
-                to manage access.
-              </p>
-            </div>
-            
-            <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-            
-            <button className="w-full py-3 bg-[#b79ffc] hover:bg-[#9d82e8] rounded-[5px] text-white">
+        </div>
+        <div
+          ref={ref3}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView3 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
+        >
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">User control</h1>
+            <p>
+              Users have full control over their identity data, with the ability
+              to manage access.
+            </p>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
               What is user control?
             </button>
           </div>
         </div>
-
-      <div className="w-full min-h-screen flex flex-col md:flex-row 
-        justify-start md:justify-between items-start
-        gap-6 md:gap-8 pt-20">
-        <div ref={ref4}
-            className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-              border-[0.5px] dark:border-0 
-              flex flex-col justify-between items-center 
-              transition-transform duration-700 ease-out
-              ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
-          >
-            <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-              <h2 className="text-xl md:text-2xl font-bold mb-2">Blockchain integration</h2>
-              <p className="text-sm md:text-base">
-                Aman leverages the ICP network for decentralized, transparent, and
-                immutable identity management.
-              </p>
-            </div>
-            
-            <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-            
-            <button className="w-full py-3 bg-[#b79ffc] hover:bg-[#9d82e8] 
-              rounded-[5px] text-white">
+      </div>
+      <div className="w-[100%] h-[70vh] flex justify-between items-center">
+        <div
+          ref={ref4}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView4 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
+        >
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">Blockchain integration</h1>
+            <p>
+              Aman leverages the ICP network for decentralized, transparent, and
+              immutable identity management.
+            </p>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
               What is blockchain integration?
             </button>
           </div>
-
-          <div ref={ref4}
-            className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-              border-[0.5px] dark:border-0 
-              flex flex-col justify-between items-center 
-              transition-transform duration-700 ease-out
-              ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
-          >
-            <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-              <h2 className="text-xl md:text-2xl font-bold mb-2">Global access</h2>
-              <p className="text-sm md:text-base">
-                Aman enables users to access and use their digital identities
-                globally, supporting cross-border authentication.
-              </p>
-            </div>
-            
-            <div className="w-full aspect-video bg-gray-200 mb-4"></div>
-            
-            <button className="w-full py-3 bg-[#b79ffc] hover:bg-[#9d82e8] rounded-[5px] text-white">
+        </div>
+        <div
+          ref={ref4}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-[#ffffff40] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-between items-center transition-transform duration-700 ease-out ${
+            inView4 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
+        >
+          <div className="flex flex-col text-start w-[80%]">
+            <h1 className="font-bold text-[22px]">Global access</h1>
+            <p>
+              Aman enables users to access and use their digital identities
+              globally, supporting cross-border authentication.
+            </p>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+          </div>
+          <div className="w-[95%] flex items-center justify-center">
+            <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
               What is global access?
             </button>
           </div>
@@ -336,7 +335,6 @@ const OverviewContent = () => {
               improved with ICP:
             </p>
           </div>
-          
           <div className="w-[85%] h-[80%] flex justify-center text-start">
             <ul className="list-disc pl-5">
               <li>Decentralized Identity Verification</li>

@@ -143,7 +143,7 @@ const Navbar = ({ footerRef }: NavbarProps) => {
             }`}
             onClick={toggleDarkMode}
           ></i>
-          <i className="fa-solid fa-wallet h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] transform transition-transform duration-500 hover:rotate-12"
+          <i className="fa-solid fa-wallet h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] transform transition-transform duration-500 hover:cursor-pointer hover:rotate-12"
             onClick={toggleCart}
           ></i>
           <div className="md:hidden">
