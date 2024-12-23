@@ -4,12 +4,18 @@ import { fileURLToPath, URL } from "node:url";
 import environment from "vite-plugin-environment";
 import path from "node:path";
 
+process.env.II_URL =
+  process.env.DFX_NETWORK === "local"
+    ? `http://${process.env.CANISTER_ID_INTERNET_IDENTIY}.localhost:4943`
+    : `https://identity.ic0.app`;
+
 export default defineConfig({
   base: "./",
   plugins: [
     react(),
     environment("all", { prefix: "CANISTER_" }),
     environment("all", { prefix: "DFX_" }),
+    environment(["II_URL"]),
   ],
   envDir: "../",
   define: {
