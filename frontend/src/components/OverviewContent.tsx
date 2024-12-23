@@ -62,7 +62,7 @@ const OverviewContent = () => {
             </p>
           </div>
           <div className="w-[95%] flex items-center justify-center">
-            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+            <img className="bg-[url('./assets/logo.png')] bg-center bg-cover h-[200px] w-[95%]"></img>
           </div>
           <div className="w-[95%] flex items-center justify-center">
             <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
@@ -84,7 +84,7 @@ const OverviewContent = () => {
             </p>
           </div>
           <div className="w-[95%] flex items-center justify-center">
-            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+            <img className="bg-[url('./assets/ICP-Logo.jpg')] bg-center bg-cover h-[200px] w-[95%]"></img>
           </div>
           <div className="w-[95%] flex items-center justify-center">
             <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">
@@ -106,7 +106,7 @@ const OverviewContent = () => {
             </p>
           </div>
           <div className="w-[95%] flex items-center justify-center">
-            <img className="bg-gray-200 h-[200px] w-[95%]"></img>
+            <img className="bg-[url('./assets/web3-logo.png')] bg-center bg-cover h-[200px] w-[95%]"></img>
           </div>
           <div className="w-[95%] flex items-center justify-center">
             <button className="h-[40px] w-[95%] bg-[#b79ffc] rounded-[5px] text-white">

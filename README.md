@@ -1,45 +1,119 @@
-# Hello, world!
+# Hackathon 9.0 Codefest
 
-![Hello, world!](/examples/_attachments/hello_world.png)
+> ## **Table of Contents**
 
-Start developing on ICP with the “Hello, world!” Rust smart contract. Learn how entire dapps, composed of frontend, backend, and data storage, are built from canister smart contracts.
+- [General Information](#general-information)
+- [Requirements](#requirements)
+- [How to Run and Compile](#how-to-run-and-compile)
+- [Screenshots](#screenshots)
+- [Author](#author)
 
-## What is Hello, world?
+## **General Information**
+Welcome to AMAN, a Web3 platform that leverages blockchain technology to create
+secure, decentralized digital identity cards and manage critical assets like certificates, stamps, and seals. AMAN is a B2B business solutions that works with government, schools, universities, and other agency.
 
-"Hello, world!" projects are a common starting point for developers learning new languages or platforms, as it provides a simple demonstration of how a programming language can be written for an application.
+## **How It Works**
+1. **Document Upload** <br> Users upload their ID Card, certificates, or legal stamps to the AMAN platform.
 
-This variation of "Hello, world!" is written in [Rust](https://internetcomputer.org/docs/current/developer-docs/backend/rust/),a programming language designed specifically for developing smart contracts on ICP. Smart contracts on ICP are called **canisters.**
+2. **Conversion** <br> Documents are encrypted and converted into NFTs on the blockchain.
 
-Every ICP smart contract must be [compiled into WebAssembly](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/compile) before it can be deployed. Rust's compiler supports compiling to Wasm directly under the hood. It offers seamless integration for ICP features and makes the most out of WebAssembly's functionalities.
+3. **Payments** <br> The Payment bill will be seen after the conversion process and can be paid using wallet
 
-### Project structure
+4. **Secure Access** <br> Only the document owner can share or revoke access. The NFT that was owned was shown in the NFT Collections
 
-The `/backend` folder contains the Rust smart contract:
+## **How to Run and Compile**
+### **Setup**
 
-- `Cargo.toml`, which defines the crate that will form the backend
-- `lib.rs`, which contains the actual smart contract, and exports its interface
+1. Clone this repository <br>
 
-The `/frontend` folder contains web assets for the application's user interface. The user interface is written with plain JavaScript, but any frontend framework can be used.
+```sh
+$ git clone git@github.com:JasonFernandoo/CodeFest.git
+```
+2. Open this repository in terminal
 
-## What you'll learn
+### 1. Install developer tools.
 
-### Query calls
+You can install the developer tools natively or develop using Dev Containers.
 
-In this "Hello, world!" example, the Rust smart contract exposes a `query` method that can be called to return a "Hello, #name!" message to the user. [Query calls](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/call/overview#query-calls) are used to return data from a smart contract, and their response is not validated by consensus.
+#### Option 1: Natively install developer tools
 
-### Onchain frontend
+> Installing `dfx` natively is currently only supported on macOS and Linux systems. On Windows, it is recommended to use Dev Containers below.
 
-ICP is the only blockchain that can serve web assets (HTML, CSS, JS, and others) from the blockchain to your web browser. To host these assets, a canister smart contract implements a method that accepts and consumes an HTTP request, then returns the web assets in the HTTP response.
+1. Install `dfx` with the following command:
 
-In this example, the React frontend is compiled into an [asset canister smart contract](https://internetcomputer.org/docs/current/developer-docs/web-apps/application-frontends/overview) and deployed to ICP.
+```
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+```
 
-To communicate with the backend smart contract, it uses the [ICP JavaScript agent](https://internetcomputer.org/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent).
+2. [Install NodeJS](https://nodejs.org/en/download/package-manager).
 
-## Learn more
+> On Apple Silicon (e.g., Apple M1 chip), make sure you have Rosetta installed (`softwareupdate --install-rosetta`).
 
-- [Rust documentation](https://internetcomputer.org/docs/current/developer-docs/backend/rust/)
-- [ICP development workflow](https://internetcomputer.org/docs/current/developer-docs/getting-started/development-workflow)
-- [Inside canisters](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/overview/inside-canisters)
-- [Canister lifecycle](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/overview/canister-lifecycle)
-- [Application frontends](https://internetcomputer.org/docs/current/developer-docs/web-apps/application-frontends/overview)
-- [React quickstart](https://internetcomputer.org/docs/current/developer-docs/getting-started/quickstart/react-quickstart)
+3. For Rust projects, you will also need to:
+
+- Install [Rust](https://doc.rust-lang.org/cargo/getting-started/installation.html#install-rust-and-cargo): `curl https://sh.rustup.rs -sSf | sh`
+- Install [candid-extractor](https://crates.io/crates/candid-extractor): `cargo install candid-extractor`
+
+4. For Motoko projects, you will also need to:
+
+- Install the Motoko package manager [Mops](https://docs.mops.one/quick-start#2-install-mops-cli): `npm i -g ic-mops`
+
+Lastly, navigate into your project's directory that you downloaded from ICP Ninja.
+
+#### Option 2: Dev Containers
+
+Continue building your projects locally by installing the [Dev Container extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) in VS Code and [Docker](https://docs.docker.com/engine/install/).
+
+Make sure Docker is running, then navigate into your project's directory that you downloaded from ICP Ninja and start the Dev Container by selecting `Dev-Containers: Reopen in Container` in VS Code's command palette (F1 or Ctrl+Shift+P).
+
+### 2. Create a local developer identity.
+
+To manage your project's canisters, it is recommended that you create a local [developer identity](https://internetcomputer.org/docs/current/developer-docs/getting-started/accounts) rather than use the `dfx` default identity that is not stored securely.
+
+To create a new identity, run the commands:
+
+```
+dfx start --background
+dfx identity new IDENTITY_NAME
+dfx identity use IDENTITY_NAME
+```
+
+Replace `IDENTITY_NAME` with your preferred identity name. The first command, `dfx start --background` starts the local `dfx` processes, then `dfx identity new` will create a new identity and return your identity's seed phase. Be sure to save this in a safe, secure location.
+
+The third command, `dfx identity use` will tell `dfx` to use your new identity as the active identity. Any canister smart contracts created after running `dfx identity use` will be owned and controlled by the active identity.
+
+Your identity will have a **principal ID** associated with it. Principal IDs are used to identify different entities on ICP, such as users and canisters.
+
+[Learn more about ICP developer identities](https://internetcomputer.org/docs/current/developer-docs/getting-started/accounts).
+
+### 3. Deploy the project locally.
+
+Deploy your project to your local developer environment with the commands:
+
+```
+dfx deploy
+```
+
+Your project will be hosted on your local machine. The local canister URLs for your project will be shown in the terminal window as output of the `dfx deploy` command. You can open these URLs in your web browser to view the local instance of your project.
+
+## Screenshots
+1. Landing Page 
+    <img src="./frontend/public/LANDINGPAGE.jpg">
+2. Overview Page 
+    <img src="./frontend/public/OVERVIEW.jpg">
+3. Document Upload Page
+    <img src="./frontend/public/UPLOAD.jpg">
+4. Payments Page
+    <img src="./frontend/public/PAYMENTS.jpg">
+5. Secure Access Page
+    <img src="./frontend/public/SECURE.jpg">
+
+## Author
+
+|         **Name**          | **University** |
+| :-----------------------: | :-----------------------------------: |
+| Jonathan Emmanuel Saragih   |    Bandung Institute Of Technology    |
+|   Satriadhikara Panji Yudhistira    |    Bandung Institute Of Technology    |
+| Mohammad Andhika Fadillah |    Bandung Institute Of Technology    |
+| Farrel Natha Saskoro    |    Bandung Institute Of Technology    |
+| Jason Fernando   |    Bandung Institute Of Technology    |
