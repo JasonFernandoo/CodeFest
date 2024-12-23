@@ -1,11 +1,9 @@
-import react from 'react';
-import Input from '../components/input';
-
+import Input from "@/components/Input";
 
 const InputPage = () => {
   return (
     <>
-        <Input />
+      <Input />
     </>
   );
 };
