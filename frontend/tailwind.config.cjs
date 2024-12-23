@@ -5,6 +5,16 @@ module.exports = {
   ],
   theme: {
   	extend: {
+		animation: {
+			'bounce-slow': 'bounce 3s infinite',
+			'rotate-right-left': 'rotateRightLeft 3s infinite linear',
+		},
+		keyframes: {
+			rotateRightLeft: {
+			  '0%, 100%': { transform: 'rotate(0deg)' },
+			  '50%': { transform: 'rotate(10deg)' },
+			},
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
