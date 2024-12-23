@@ -1,4 +1,3 @@
-import React from "react";
 import { useDarkMode } from "../DarkModeContext";
 import { motion } from "framer-motion";
 
@@ -25,25 +24,25 @@ const Service = () => {
         {/* Vertical Service Boxes */}
         <div className="relative flex flex-col px-40">
           {/* Vertical Line */}
-            <div className="flex flex-col justify-center items-center">
-              <motion.div
-                initial={{ height: "0%", opacity: 0 }}
-                whileInView={{ height: "100%", opacity: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{
-                  duration: 5,
-                  ease: "easeInOut",
-                  delay: 0.2
-                }}
-                className="absolute w-1 top-0 origin-top"
-                style={{
-                  background: "linear-gradient(to bottom, #FF00FF, #086478)",
-                }}
-              />
-            </div>
+          <div className="flex flex-col justify-center items-center">
+            <motion.div
+              initial={{ height: "0%", opacity: 0 }}
+              whileInView={{ height: "100%", opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{
+                duration: 5,
+                ease: "easeInOut",
+                delay: 0.2,
+              }}
+              className="absolute w-1 top-0 origin-top"
+              style={{
+                background: "linear-gradient(to bottom, #FF00FF, #086478)",
+              }}
+            />
+          </div>
 
-            {/* Service 1 */}
-            <div className="w-full flex justify-start ">
+          {/* Service 1 */}
+          <div className="w-full flex justify-start ">
             <motion.div
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -63,29 +62,29 @@ const Service = () => {
                 Lorem Ipsum Dolor Sit Amet
               </p>
             </motion.div>
-            </div>
-            {/* Service 2 */}
-            <div className="w-full flex justify-end" >
-              <motion.div
-                initial={{ opacity: 0, y: 50, scale: 0.8 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                className={`relative z-10 backdrop-blur-md opacity-50 w-96 h-40 md:h-60 shadow-lg rounded-lg flex flex-col justify-center items-center transition-all duration-300 mb-8 self-start ${
-                  darkMode
-                    ? "bg-gradient-to-br from-gray-800 via-red-900 to-black text-white"
-                    : "bg-gradient-to-br from-gray-100 via-red-100 to-white text-black"
-                }`}
-              >
-                <div className="text-blue-400 text-7xl mb-2">
-                  <i className="fas fa-certificate"></i>
-                </div>
-                <h2 className="text-lg font-semibold text-center">Certificate</h2>
-                <p className="text-sm text-center mt-1 text-gray-400">
-                  Lorem Ipsum Dolor Sit Amet
-                </p>
-              </motion.div>
-            </div>
+          </div>
+          {/* Service 2 */}
+          <div className="w-full flex justify-end">
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.8 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              className={`relative z-10 backdrop-blur-md opacity-50 w-96 h-40 md:h-60 shadow-lg rounded-lg flex flex-col justify-center items-center transition-all duration-300 mb-8 self-start ${
+                darkMode
+                  ? "bg-gradient-to-br from-gray-800 via-red-900 to-black text-white"
+                  : "bg-gradient-to-br from-gray-100 via-red-100 to-white text-black"
+              }`}
+            >
+              <div className="text-blue-400 text-7xl mb-2">
+                <i className="fas fa-certificate"></i>
+              </div>
+              <h2 className="text-lg font-semibold text-center">Certificate</h2>
+              <p className="text-sm text-center mt-1 text-gray-400">
+                Lorem Ipsum Dolor Sit Amet
+              </p>
+            </motion.div>
+          </div>
           {/* Service 3 */}
           <motion.div
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
