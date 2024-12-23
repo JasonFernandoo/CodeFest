@@ -221,13 +221,21 @@ fn icrc7_burn(token_id: TokenId) -> Result<String, String> {
 
 /// (Non-standard) For debugging or viewing all NFTs.
 #[query]
-fn list_all_nfts() -> Vec<(TokenId, Metadata)> {
+fn list_all_nfts() -> Vec<(TokenId, Metadata, Vec<u8>)> {
     STATE.with(|state| {
         let state = state.borrow();
         state
             .nfts
             .iter()
-            .map(|(token_id, nft)| (*token_id, nft.metadata.clone()))
+            .map(|(token_id, nft)| {
+                let decoded_image = nft
+                    .metadata
+                    .iter()
+                    .find(|(key, _)| key == "image")
+                    .and_then(|(_, value)| base64::decode(value).ok())
+                    .unwrap_or_default();
+                (*token_id, nft.metadata.clone(), decoded_image)
+            })
             .collect()
     })
 }
