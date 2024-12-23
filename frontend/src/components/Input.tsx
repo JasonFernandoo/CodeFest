@@ -1,82 +1,114 @@
-import React, { useState } from 'react';
-import { useDarkMode } from '../DarkModeContext';
+import { useState } from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"; // Adjust import path as needed
+import { Input as ShadInput } from "@/components/ui/input"; // Adjust import path
+import { Button } from "@/components/ui/button"; // Adjust import path
+import { useDarkMode } from "../DarkModeContext";
 
-const Input = () => {
-    const { darkMode } = useDarkMode();
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-    const [fileName, setFileName] = useState<string | null>(null);
-    const [imageName, setImageName] = useState<string>('');
+const formSchema = z.object({
+  image: z
+    .any()
+    .refine((file) => file instanceof File, { message: "File is required" }),
+  name: z.string().nonempty("Image name is required"),
+});
 
-    return (
-        <>
-            <div
-            className={`h-[100vh] w-[100vw] flex justify-center items-center py-10 px-4 ${
-                darkMode ? 'bg-black text-white' : 'bg-white text-black'
-            }`}
-            >
-                <div className="flex flex-col items-center gap-4 p-6 border rounded-lg">
-                    {/* File Upload */}
-                    <label className="cursor-pointer">
-                    <input
+type FormValues = z.infer<typeof formSchema>;
+
+export default function Input() {
+  const { darkMode } = useDarkMode();
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+  });
+
+  function onSubmit(values: FormValues) {
+    console.log(values);
+  }
+
+  return (
+    <div
+      className={`h-[100vh] w-[100vw] flex justify-center items-center py-10 px-4 ${
+        darkMode ? "bg-black text-white" : "bg-white text-black"
+      }`}
+    >
+      <div className="flex flex-col items-center gap-4 p-6 border rounded-lg w-full max-w-md">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-4 w-full"
+          >
+            {/* Image Field */}
+            <FormField
+              control={form.control}
+              name="image"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Upload Image</FormLabel>
+                  <FormControl>
+                    <div>
+                      <ShadInput
                         type="file"
-                        className="hidden"
                         accept="image/*"
                         onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                            // Handle file upload logic
-                            setFileName(file.name);
+                          const file = e.target.files?.[0];
+                          if (file) {
+                            field.onChange(file);
                             const reader = new FileReader();
                             reader.onloadend = () => {
-                            setPreviewUrl(reader.result as string);
+                              setPreviewUrl(reader.result as string);
                             };
                             reader.readAsDataURL(file);
-                        }
+                          }
                         }}
-                    />
-                    <div className={`w-60 h-60 border-2 border-dashed rounded-lg flex items-center justify-center`}>
-                        {previewUrl ? (
-                        <img
+                      />
+                      {previewUrl && (
+                        <div className="mt-2 w-60 h-60 border flex items-center justify-center">
+                          <img
                             src={previewUrl}
                             alt="Preview"
                             className="max-w-full max-h-full object-contain"
-                        />
-                        ) : (
-                        <span className="text-gray-400">Click to upload image</span>
-                        )}
+                          />
+                        </div>
+                      )}
                     </div>
-                    </label>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-                    {/* File Name */}
-                    {fileName && <p className="text-sm text-gray-600">{fileName}</p>}
+            {/* Image Name Field */}
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Image Name</FormLabel>
+                  <FormControl>
+                    <ShadInput placeholder="Enter image name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-                    {/* Image Name Input */}
-                    <input
-                    type="text"
-                    placeholder="Enter image name"
-                    value={imageName}
-                    onChange={(e) => setImageName(e.target.value)}
-                    className="w-full max-w-xs border border-gray-300 rounded-lg p-2 text-sm text-gray-900 bg-gray-50 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 focus:outline-none"
-                    />
-                    
-                    {/* Submit Button */}
-                    <button
-                    className="w-full max-w-xs font-semibold py-2 px-4 rounded-lg text-white 
-                        bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 
-                        hover:from-blue-600 hover:via-purple-600 hover:to-pink-600
-                        transition-all duration-300 ease-in-out
-                        transform hover:scale-[0.98]"
-                    onClick={() => {
-                        // Handle submit logic
-                        console.log(imageName);
-                    }}
-                    >
-                    Submit
-                    </button>
-                </div>
-            </div>
-        </> 
-    );
-};
-
-export default Input;
+            {/* Submit */}
+            <Button type="submit" variant="default">
+              Submit
+            </Button>
+          </form>
+        </Form>
+      </div>
+    </div>
+  );
+}
