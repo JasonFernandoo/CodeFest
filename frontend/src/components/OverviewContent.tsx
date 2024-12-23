@@ -322,35 +322,34 @@ const OverviewContent = () => {
               What is global access?
             </button>
           </div>
-
-          <div ref={ref4}
-            className={`w-full md:w-[30%] p-6 bg-[#ffffff40] rounded-lg 
-              border-[0.5px] dark:border-0 
-              flex flex-col justify-between items-center 
-              transition-transform duration-700 ease-out
-              ${inView ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
-          >
-            <div className="flex flex-col text-start w-full md:w-[80%] mb-4">
-              <h2 className="text-xl md:text-2xl font-bold mb-2">Emerging use cases</h2>
-              <p className="text-sm md:text-base">
-                There are also other prominent industries being created or
-                improved with ICP:
-              </p>
-            </div>
-            
-              <div className="w-[85%] h-[80%] flex justify-center text-start">
-                <ul className="list-disc pl-5">
-                  <li>Decentralized Identity Verification</li>
-                  <li>Access Control and Authentication</li>
-                  <li>Digital Voting Systems</li>
-                  <li>Cross-Border Identity Management</li>
-                  <li>Decentralized Financial Services (DeFi)</li>
-                  <li>Supply Chain and Product Authenticity</li>
-                  <li>Healthcare and Medical Records</li>
-                </ul>
-              </div>
+        </div>
+        <div
+          ref={ref4}
+          className={`h-[90%] pt-[2.5%] pb-[1.5%] w-[30%] bg-gradient-to-l from-[#cc98fb] to-[#a1a6fc] rounded-[5px] border-[0.5px] dark:border-0 flex flex-col justify-center items-center transition-transform duration-700 ease-out ${
+            inView4 ? "opacity-100 scale-100" : "opacity-0 scale-50"
+          }`}
+        >
+          <div className="flex flex-col text-start w-[80%] h-[35%]">
+            <h1 className="font-bold text-[22px]">Emerging use cases</h1>
+            <p>
+              There are also other prominent industries being created or
+              improved with ICP:
+            </p>
           </div>
-        </div>  
+          
+          <div className="w-[85%] h-[80%] flex justify-center text-start">
+            <ul className="list-disc pl-5">
+              <li>Decentralized Identity Verification</li>
+              <li>Access Control and Authentication</li>
+              <li>Digital Voting Systems</li>
+              <li>Cross-Border Identity Management</li>
+              <li>Decentralized Financial Services (DeFi)</li>
+              <li>Supply Chain and Product Authenticity</li>
+              <li>Healthcare and Medical Records</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
