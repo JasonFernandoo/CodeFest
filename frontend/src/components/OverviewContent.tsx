@@ -1,8 +1,9 @@
-// import { useDarkMode } from "../DarkModeContext";
+// import React from 'react'
+// import { useDarkMode } from '../DarkModeContext'
 import { useInView } from "react-intersection-observer";
 
 const OverviewContent = () => {
-  //   const { darkMode } = useDarkMode();
+  // const {darkMode} = useDarkMode();
 
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -30,16 +31,20 @@ const OverviewContent = () => {
         className="w-[100%] h-[30vh] flex flex-col justify-center text-start"
         id="what-is-aman"
       >
-        <h1 className="text-[30px] font-bold">What is Aman?</h1>
+        <h1 className="text-[30px] font-bold">Know better about aman</h1>
         <p className="text-[18px] mt-[3%]">
-          Aman is a Web3 platform that uses blockchain technology to create
-          secure and decentralized digital identity cards. While it allows for
-          seamless global transactions, its true power lies in its ability to
-          enable individuals to manage and verify their identities in a
-          tamper-proof, transparent way. Aman combines security and flexibility,
-          allowing anyone to interact with the platform and build applications
-          that empower users to control their digital identity. Learn more and
-          explore how to get started:
+          Aman is a Web3 platform that leverages blockchain technology to create
+          secure, decentralized digital identity cards and manage critical
+          assets like certificates, stamps, and seals. As a platform that
+          enables the digitization of assets into Web3, Aman connects your data
+          seamlessly to the blockchain, ensuring it is tamper-proof,
+          transparent, and protected from hacking or unauthorized duplication.
+          By empowering individuals to manage, verify, and control their
+          identities and assets without intermediaries, Aman guarantees
+          unparalleled security and reliability. It also provides flexibility
+          for developers to build applications that enhance these capabilities,
+          offering a future where your digital assets remain authentic, secure,
+          and fully under your control.
         </p>
       </div>
       <div className="w-[100%] h-[70vh] flex justify-between items-center">
@@ -133,7 +138,10 @@ const OverviewContent = () => {
         >
           <div className="flex flex-col text-start w-[80%]">
             <h1 className="font-bold text-[22px]">Find a wallet</h1>
-            <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+            <p>
+              Discover wallets compatible with Web3 to securely store and manage
+              your digital assets.
+            </p>
           </div>
           <div className="w-[95%] flex items-center justify-center">
             <img className="bg-gray-200 h-[200px] w-[95%]"></img>
@@ -152,7 +160,10 @@ const OverviewContent = () => {
         >
           <div className="flex flex-col text-start w-[80%]">
             <h1 className="font-bold text-[22px]">What is a wallet?</h1>
-            <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+            <p>
+              A wallet is a tool that helps you securely store, send, and
+              receive cryptocurrencies or digital assets.
+            </p>
           </div>
           <div className="w-[95%] flex items-center justify-center">
             <img className="bg-gray-200 h-[200px] w-[95%]"></img>
@@ -171,7 +182,11 @@ const OverviewContent = () => {
         >
           <div className="flex flex-col text-start w-[80%]">
             <h1 className="font-bold text-[22px]">ICP networks</h1>
-            <p>Lorem ipsum odor amet, consectetuer adipiscing elit.</p>
+            <p>
+              {" "}
+              An introduction to Internet Computer Protocol (ICP) and its role
+              in powering scalable decentralized applications.
+            </p>
           </div>
           <div className="w-[95%] flex items-center justify-center">
             <img className="bg-gray-200 h-[200px] w-[95%]"></img>
@@ -205,7 +220,7 @@ const OverviewContent = () => {
             <h1 className="font-bold text-[22px]">Digital identity creation</h1>
             <p>
               Aman allows users to create secure, blockchain-based digital
-              identity cards.
+              identity cards, certification, and duty stamps.
             </p>
           </div>
           <div className="w-[95%] flex items-center justify-center">
