@@ -61,7 +61,9 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-[10px]">
           <i 
-            className="fas fa-moon h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] cursor-pointer transform transition-transform duration-500 hover:rotate-12"
+            className={`h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] cursor-pointer transform transition-transform duration-500 hover:rotate-12 ${
+              darkMode ? 'fas fa-sun' : 'fas fa-moon'
+            }`}
             onClick={toggleDarkMode}
           ></i>
           <i className="fa-solid fa-shopping-cart h-[45px] w-[45px] rounded-[10px] bg-[#d9d9d940] flex justify-center items-center hover:bg-[#89898930] transform transition-transform duration-500 hover:rotate-12"></i>
