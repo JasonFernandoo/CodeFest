@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { backend } from 'declarations/backend';
-import { useDarkMode } from '../DarkModeContext';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { useDarkMode } from "../DarkModeContext";
+import { motion } from "framer-motion";
+import { useActor } from "@/ic/Actors";
 
 type NFT = {
   token_id: bigint;
@@ -10,18 +10,21 @@ type NFT = {
 };
 
 const Collections: React.FC = () => {
+  const { actor: backend } = useActor();
   const { darkMode } = useDarkMode();
   const [nfts, setNfts] = useState<NFT[]>([]);
 
   useEffect(() => {
     async function fetchNFTs() {
-      const nftList = await backend.list_all_nfts();
-      const formattedNFTs = nftList.map(([token_id, metadata, image]) => ({
-        token_id,
-        metadata,
-        image: new Uint8Array(image),
-      }));
-      setNfts(formattedNFTs);
+      if (backend) {
+        const nftList = await backend.list_all_nfts();
+        const formattedNFTs = nftList.map(([token_id, metadata, image]) => ({
+          token_id,
+          metadata,
+          image: new Uint8Array(image),
+        }));
+        setNfts(formattedNFTs);
+      }
     }
     fetchNFTs();
   }, []);
@@ -29,7 +32,9 @@ const Collections: React.FC = () => {
   return (
     <div
       className={`max-w-full w-full flex flex-col justify-start items-center py-10 px-4 ${
-        darkMode ? 'bg-black text-white text-3xl' : 'bg-white text-black text-3xl'
+        darkMode
+          ? "bg-black text-white text-3xl"
+          : "bg-white text-black text-3xl"
       }`}
     >
       <motion.h1
@@ -48,15 +53,19 @@ const Collections: React.FC = () => {
             key={nft.token_id.toString()}
             initial={{ opacity: 0, y: 50, scale: 0.8 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
             className={`relative backdrop-blur-md border h-40 md:h-52 shadow-lg rounded-lg flex justify-center items-center transition-all duration-300 group cursor-pointer ${
-              darkMode ? 'bg-black text-white border-white' : 'bg-white text-black border-black'
+              darkMode
+                ? "bg-black text-white border-white"
+                : "bg-white text-black border-black"
             }`}
           >
             <div className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center">
               <img
-                src={URL.createObjectURL(new Blob([nft.image], { type: 'image/png' }))}
+                src={URL.createObjectURL(
+                  new Blob([nft.image], { type: "image/png" })
+                )}
                 alt=""
                 className="w-full h-full object-contain transition-all duration-300 group-hover:opacity-0"
               />
@@ -64,14 +73,16 @@ const Collections: React.FC = () => {
             <div
               className="absolute inset-0 flex flex-col justify-center items-center p-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20"
               style={{
-                background: 'linear-gradient(to right, rgba(249,115,22,0.3), rgba(139,92,246,0.3))',
+                background:
+                  "linear-gradient(to right, rgba(249,115,22,0.3), rgba(139,92,246,0.3))",
               }}
             >
               <h2 className="text-xl md:text-2xl font-semibold">
-                {nft.metadata.find(([key]) => key === 'name')?.[1] || 'NFT'}
+                {nft.metadata.find(([key]) => key === "name")?.[1] || "NFT"}
               </h2>
               <p className="text-sm md:text-base">
-                {nft.metadata.find(([key]) => key === 'description')?.[1] || 'No description'}
+                {nft.metadata.find(([key]) => key === "description")?.[1] ||
+                  "No description"}
               </p>
             </div>
           </motion.div>

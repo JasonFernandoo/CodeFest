@@ -21,7 +21,7 @@ import {
 import { Input as ShadInput } from "@/components/ui/input"; // Adjust import path
 import { Button } from "@/components/ui/button"; // Adjust import path
 import { useDarkMode } from "../DarkModeContext";
-import { backend } from "declarations/backend";
+import { useActor } from "@/ic/Actors";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Token ID is required" }),
@@ -30,6 +30,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function Input() {
+  const { actor: backend } = useActor();
   const { darkMode } = useDarkMode();
   const [data, setData] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -41,8 +42,12 @@ export default function Input() {
   async function onSubmit(values: FormValues) {
     console.log(values);
     const tokenId = BigInt(values.name);
+    if (!backend) {
+      console.error("Backend is not defined");
+      return;
+    }
     const response = await backend.icrc7_get_image(tokenId);
-    const blob = new Blob([new Uint8Array(response)], { type: 'image/png' });
+    const blob = new Blob([new Uint8Array(response)], { type: "image/png" });
     const url = URL.createObjectURL(blob);
     setData(url);
     setIsDialogOpen(true);
@@ -57,8 +62,9 @@ export default function Input() {
 
   return (
     <div
-      className={`h-[100vh] w-[100vw] flex justify-center bg-[url('/background2.png')] bg-cover bg-center items-center py-10 px-4 ${darkMode ? "bg-black text-white" : "bg-white text-black"
-        }`}
+      className={`h-[100vh] w-[100vw] flex justify-center bg-[url('/background2.png')] bg-cover bg-center items-center py-10 px-4 ${
+        darkMode ? "bg-black text-white" : "bg-white text-black"
+      }`}
     >
       <div className="flex flex-col items-center gap-4 p-6 border rounded-lg w-full max-w-md">
         <Form {...form}>
@@ -106,17 +112,11 @@ export default function Input() {
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                   <DialogTitle>NFT</DialogTitle>
-                  <DialogDescription>
-                    Here is your NFT
-                  </DialogDescription>
+                  <DialogDescription>Here is your NFT</DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                   {data && (
-                    <img
-                      src={data}
-                      alt="NFT"
-                      className="w-full max-w-md"
-                    />
+                    <img src={data} alt="NFT" className="w-full max-w-md" />
                   )}
                 </div>
               </DialogContent>
