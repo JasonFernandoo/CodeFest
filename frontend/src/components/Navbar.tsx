@@ -79,6 +79,14 @@ const Navbar = ({ footerRef }: NavbarProps) => {
                   NFT
                 </Link>
               </li>
+              <li className="text-[16px] hover:text-[#898989]">
+                <Link
+                  to="/nft"
+                  className="no-underline text-inherit hover:text-[#898989]"
+                >
+                  Storage
+                </Link>
+              </li>
               <li
                 className="text-[16px] hover:text-[#898989]"
                 onClick={scrollToFooter}

@@ -7,6 +7,7 @@ import Overview from "./pages/Overview";
 import InputPage from "./pages/InputPage";
 import Footer from "./components/Footer";
 import Profile from './pages/Profile';
+import NFTPage from "./pages/NFTPage";
 
 function App() {
   const footerRef = useRef<HTMLDivElement>(null);
@@ -20,6 +21,7 @@ function App() {
           <Route path="/overview" element={<Overview />} />
           <Route path="/input" element={<InputPage />} />
           <Route path="/profile" element={<Profile/>} />
+          <Route path="/nft" element={<NFTPage />} />
         </Routes>
         <Footer ref={footerRef} />
       </Router>
