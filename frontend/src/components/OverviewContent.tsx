@@ -26,12 +26,12 @@ const OverviewContent = () => {
   });
 
   return (
-    <div className={`w-[95%]`}>
+    <div className={`w-[95%] mt-[7%]`}>
       <div
         className="w-[100%] h-[30vh] flex flex-col justify-center text-start"
         id="what-is-aman"
       >
-        <h1 className="text-[30px] font-bold">Know better about aman</h1>
+        <h1 className="text-[30px] font-bold">Know better about Aman</h1>
         <p className="text-[18px] mt-[3%]">
           Aman is a Web3 platform that leverages blockchain technology to create
           secure, decentralized digital identity cards and manage critical

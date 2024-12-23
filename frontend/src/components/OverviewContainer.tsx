@@ -11,7 +11,7 @@ const OverviewContainer = () => {
           <OverviewNavbar />
         </div>
       </div>
-      <div className='h-auto w-[70%] flex mt-[3%]'>
+      <div className='h-auto w-[70%] flex'>
         <OverviewContent />
       </div>
     </div>
