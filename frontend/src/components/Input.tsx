@@ -35,7 +35,7 @@ export default function Input() {
   async function onSubmit(values: FormValues) {
     console.log(values);
     const arrayBuffer = await values.image.arrayBuffer();
-    backend.mint(
+    backend.icrc7_mint(
       "principal",
       "description",
       values.name,
