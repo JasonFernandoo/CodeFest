@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useDarkMode } from "../DarkModeContext";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
-const Navbar = () => {
+const Navbar = ({ footerRef }) => {
   const { darkMode, toggleDarkMode } = useDarkMode();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const scrollToFooter = () => {
+    if (footerRef.current) {
+      footerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,8 +74,7 @@ const Navbar = () => {
                   NFT
                 </Link>
               </li>
-              <li className="text-[16px] hover:text-[#898989]">Contact</li>
-            </ul>
+              <li className="text-[16px] hover:text-[#898989]" onClick={scrollToFooter}>Contact</li>            </ul>
           </div>
         </div>
         <div className="hidden md:flex items-center">

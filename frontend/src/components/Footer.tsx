@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { useDarkMode } from "../DarkModeContext";
 import defaultImage from "../assets/logo.png";
 
@@ -48,7 +48,7 @@ const contacts: Record<string, ContactDetails> = {
   },
 };
 
-const Footer = () => {
+const Footer = forwardRef<HTMLDivElement>((_, ref) => {
   const { darkMode } = useDarkMode();
   const [selectedContact, setSelectedContact] = useState<string | null>(null);
 
@@ -61,7 +61,7 @@ const Footer = () => {
     : null;
 
   return (
-    <footer className={`h-[35vh] w-[100vw]`}>
+    <footer ref={ref} className={`h-[35vh] w-[100vw]`}>
       <div
         className={`h-full w-full flex flex-col justify-center items-center ${
           darkMode ? "bg-black text-white" : "bg-white text-black"
@@ -147,6 +147,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;
