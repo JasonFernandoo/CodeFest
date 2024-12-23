@@ -1,8 +1,11 @@
 type Result = variant { Ok : text; Err : text };
 service : () -> {
-  delete_nft : (nat64) -> (Result);
+  icrc7_balance_of : (text) -> (nat64) query;
+  icrc7_burn : (nat64) -> (Result);
+  icrc7_metadata : (nat64) -> (opt vec record { text; text }) query;
+  icrc7_mint : (text, text, text, blob) -> (nat64);
+  icrc7_owner_of : (nat64) -> (opt text) query;
+  icrc7_total_supply : () -> (nat64) query;
+  icrc7_transfer : (nat64, text) -> (Result);
   list_all_nfts : () -> (vec record { nat64; vec record { text; text } }) query;
-  metadata : (nat64) -> (opt vec record { text; text }) query;
-  mint_with_image : (text, text, text, blob) -> (nat64);
-  owner_of : (nat64) -> (opt text) query;
 }

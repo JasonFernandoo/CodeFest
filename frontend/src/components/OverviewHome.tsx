@@ -1,11 +1,10 @@
-import React from 'react';
-import { useDarkMode } from '../DarkModeContext';
+import { useDarkMode } from "../DarkModeContext";
 
 const OverviewHome = () => {
   const { darkMode } = useDarkMode();
 
   const scrollToContent = () => {
-    const element = document.getElementById('overview-content');
+    const element = document.getElementById("overview-content");
     if (element) {
       const offset = 70;
       const elementPosition = element.getBoundingClientRect().top;
@@ -13,7 +12,7 @@ const OverviewHome = () => {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };
@@ -35,6 +34,7 @@ const OverviewHome = () => {
             </div>
           </div>
         </div>
+      </div>
     </div>
   );
 };

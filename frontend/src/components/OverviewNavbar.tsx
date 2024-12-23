@@ -1,8 +1,7 @@
-import React from 'react';
-import { useDarkMode } from '../DarkModeContext';
+// import { useDarkMode } from "../DarkModeContext";
 
 const OverviewNavbar = () => {
-  const { darkMode } = useDarkMode();
+  // const { darkMode } = useDarkMode();
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -13,7 +12,7 @@ const OverviewNavbar = () => {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   };

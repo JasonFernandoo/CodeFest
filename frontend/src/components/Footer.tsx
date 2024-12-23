@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDarkMode } from "../DarkModeContext";
 import defaultImage from '../assets/logo.png'
 
